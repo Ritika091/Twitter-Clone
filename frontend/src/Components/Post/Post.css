@@ -1,0 +1,33 @@
+.Post{
+    display: flex;
+    margin: 20px 20px;
+}
+.PostBody{
+    margin-left: 20px;
+}
+.PostBody img{
+    margin-top: 15px;
+    width: 100%;
+    border-radius: 20px;
+}
+.PostHeaderText h3{
+    font-family: "TwitterChirp",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    line-height: 20px;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.PostHeaderText span{
+    font-family: "TwitterChirp",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    line-height: 20px;
+    font-size: 15px;
+    color:#536471;
+    font-weight: 400;
+}
+
+.PostHeaderDescription{
+        font-weight: 400;
+        font-size: 15px;
+        color: rgb(15, 20, 25);
+        font-family: "TwitterChirp",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+}

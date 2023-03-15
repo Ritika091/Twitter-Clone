@@ -4,6 +4,7 @@ import './SignIn.css'
 import googlelogo from '../../../assets/google.png'
 import applelogo from '../../../assets/apple.png'
 import { Link, useNavigate } from 'react-router-dom'
+import Login from '../Login'
 export default function SignIn() {
 
   const[email,setEmail]=useState("");
@@ -40,6 +41,8 @@ const[message,setMessage]=useState('');
 
   return (
     <div className='SignIn'>
+        <style>{'body { background-color: #3e65fe; }'}</style>
+      <Login/>
         <div className="formContainer1">
         <img className='signinlogo' src={logo} alt="" />
         <h2>Sign in to Twitter</h2>
