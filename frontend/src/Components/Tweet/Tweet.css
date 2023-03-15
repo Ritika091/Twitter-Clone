@@ -31,5 +31,10 @@
     font-weight: bolder;
     margin-top: 20px;
     height: 40px;
-    margin: 3rem 0 0.5rem 25rem;
+    margin: 0 0 0.5rem 25rem;
+}
+.tweetpic{
+    position: relative;
+    top: 2.5rem;
+    left: 4rem;
 }

@@ -2,6 +2,7 @@ import React from 'react'
 import { Avatar } from '@mui/material'
 import ProfileLogo from '../../assets/profileLogo.jpg'
 import './Tweet.css'
+import InsertPhotoIcon from '@mui/icons-material/InsertPhoto';
 
 export default function Tweet() {
   return (
@@ -12,7 +13,9 @@ export default function Tweet() {
                 {/* <input type="text" placeholder="What's happening?" /> */}
                 <textarea type="text" placeholder="What's happening?" />
             </div>
-            <button className='Tweetbtn'>Tweet</button>
+           <InsertPhotoIcon color="primary" className='tweetpic'/>
+           <button className='Tweetbtn'>Tweet</button>
+           
         </form>
     </div>
   )
