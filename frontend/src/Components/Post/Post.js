@@ -4,6 +4,10 @@ import { Avatar } from '@mui/material'
 import ProfileLo from '../../assets/profileLogo.jpg'
 import VerifiedIcon from '@mui/icons-material/Verified';
 import PostImg from '../../assets/postImg.jfif'
+import FavoriteBorderSharpIcon from '@mui/icons-material/FavoriteBorderSharp';
+import ChatBubbleOutlineOutlinedIcon from '@mui/icons-material/ChatBubbleOutlineOutlined';
+import RepeatOutlinedIcon from '@mui/icons-material/RepeatOutlined';
+import PublishIcon from '@mui/icons-material/Publish';
 export default function Post({
     displayName,
     username,
@@ -33,6 +37,13 @@ export default function Post({
             </div>
         </div>
         <img src={PostImg} alt="" />
+
+        <div className="PostFooter">
+        <ChatBubbleOutlineOutlinedIcon fontSize='small' className='FooterIcon'/>
+        <RepeatOutlinedIcon fontSize='small' className='FooterIcon'/>
+        <FavoriteBorderSharpIcon fontSize='small' className='FooterIcon'/>
+        <PublishIcon fontSize='small' className='FooterIcon'/>
+        </div>
     </div>
     </div>
   )
