@@ -8,20 +8,36 @@ import MailOutlineIcon from '@mui/icons-material/MailOutline';
 import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
 import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
+import { Link } from 'react-router-dom'
+import { Avatar } from '@mui/material'
+import ProfileLo from '../../assets/profileLogo.jpg'
+import LogoutIcon from '@mui/icons-material/Logout';
 
 export default function Sidebar() {
   return (
     <div className='Sidebar'>
         <img className='twitlogo' src={logo} alt="" />
-        <SidebarOption active Icon={HomeIcon} text="Home"/> 
+        <Link to="/" style={{textDecoration: "none", color:"black"}}>  <SidebarOption active Icon={HomeIcon} text="Home"/></Link> 
         <SidebarOption Icon={TagIcon} text="Explore"/> 
-        <SidebarOption Icon={NotificationsNoneIcon} text="Notifications"/> 
+        {/* <SidebarOption Icon={NotificationsNoneIcon} text="Notifications"/>  */}
         <SidebarOption Icon={MailOutlineIcon} text="Messages"/> 
         <SidebarOption Icon={BookmarkBorderIcon} text="Bookmarks"/> 
-        <SidebarOption Icon={PersonOutlineOutlinedIcon} text="Profile"/> 
+       <Link to="/profile" style={{textDecoration: "none", color:"black"}}> <SidebarOption Icon={PersonOutlineOutlinedIcon} text="Profile"/></Link> 
         <SidebarOption Icon={MoreHorizIcon } text="More"/>  
+        <SidebarOption Icon={LogoutIcon } text="Logout"/>  
 
-        <button className='tweet'>Tweet</button>       
+        <button className='tweet'>Tweet</button>  
+
+        <div className="ProfLogOut">
+         <Avatar src={ProfileLo}/>
+         <div>
+          <h4>Ritika Saxena</h4>
+          <p>@ritikasaxena09</p>
+         </div>
+         <MoreHorizIcon style={{cursor:"pointer"}}/>
+         
+          </div>     
     </div>
+
   )
 }

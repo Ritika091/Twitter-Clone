@@ -49,3 +49,16 @@
     height: 50px;
     cursor: pointer;
 }
+
+.ProfLogOut{
+    display: flex;
+    margin-top: 4rem;
+    justify-content: space-evenly;
+}
+.ProfLogOut div{
+    margin-left: -2rem;
+    font-family: "TwitterChirp",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+}
+.ProfLogOut div p{
+    color: rgb(83, 100, 113);
+}
