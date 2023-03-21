@@ -39,3 +39,9 @@
     top: 2.5rem;
     left: 4rem;
 }
+/* input[type="file"] {
+    display: none;
+}
+.CustomFile{
+    cursor: pointer;
+} */

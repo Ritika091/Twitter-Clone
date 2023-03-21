@@ -4,10 +4,15 @@ const mongoose=require('mongoose')
 const USER= mongoose.model('USER')
 const bcrypt=require('bcrypt')
 const cors=require('cors');
+const jwt=require('jsonwebtoken')
+const {Jwt_secret} = require('../keys');
+const requirelogin = require('../middlewares/requirelogin');
+
 router.use(cors());
 router.get('/',(req,res)=>{
     res.send("hello")
 })
+
 
 router.post('/signup',(req,res)=>{
     const{name,userName,email,password}=req.body;
@@ -44,8 +49,11 @@ router.post('/signup',(req,res)=>{
             }
          bcrypt.compare(password,savedUser.password).then((isMatching)=>{
             if(isMatching){
-                return res.status(200).json({message:'Logged in succcesfully'});
-            }else{
+                // return res.status(200).json({message:'Logged in succcesfully'});
+            const token=jwt.sign({_id:savedUser.id}, Jwt_secret)
+            res.json(token)
+            console.log(token)   
+        }else{
             return res.status(422).json({error:"Password doesn't match"});
             }
          }).catch(err=>console.log(err));

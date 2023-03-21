@@ -30,6 +30,8 @@ const[message,setMessage]=useState('');
         
       }else{
       setMessage(data.message);
+      console.log(data)
+      localStorage.setItem("jwt",data)
       Navigate('/');
      console.log(data.message);
       }
