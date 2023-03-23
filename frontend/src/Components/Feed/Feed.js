@@ -3,6 +3,7 @@ import Post from '../Post/Post'
 import Tweet from '../Tweet/Tweet'
 import './Feed.css'
 
+
 export default function Feed() {
   return (
     <div className='Feed'>
@@ -18,7 +19,6 @@ export default function Feed() {
         <Tweet/>
 
         {/* Post */}
-        <Post/>
         <Post/>
     </div>
   )

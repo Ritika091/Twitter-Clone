@@ -45,3 +45,6 @@ input[type="file"] {
 .CustomFile{
     cursor: pointer;
 }
+.output{
+    width: 50%;
+}

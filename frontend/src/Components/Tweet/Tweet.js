@@ -3,12 +3,13 @@ import { Avatar } from '@mui/material'
 import ProfileLogo from '../../assets/profileLogo.jpg'
 import './Tweet.css'
 import InsertPhotoIcon from '@mui/icons-material/InsertPhoto';
+import {useNavigate} from 'react-router-dom';
 
 export default function Tweet() {
   const [body,setBody]=useState("")
   const [image,setImage]=useState("")
   const [url,setUrl] = useState("")
-
+const navigate=useNavigate();
   
 
   useEffect(()=>{
@@ -82,7 +83,10 @@ export default function Tweet() {
 
 
            
-           <button className='Tweetbtn' onClick={()=>{postDetails()}}>Tweet</button>
+           <button className='Tweetbtn' onClick={()=>{
+            postDetails();
+          navigate('/');
+          }}>Tweet</button>
            
         
     </div>

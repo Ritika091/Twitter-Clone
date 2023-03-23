@@ -24,7 +24,7 @@ export default function Sidebar() {
         <SidebarOption Icon={BookmarkBorderIcon} text="Bookmarks"/> 
        <Link to="/profile" style={{textDecoration: "none", color:"black"}}> <SidebarOption Icon={PersonOutlineOutlinedIcon} text="Profile"/></Link> 
         <SidebarOption Icon={MoreHorizIcon } text="More"/>  
-        <SidebarOption Icon={LogoutIcon } text="Logout"/>  
+        <Link to="/logout" style={{textDecoration: "none", color:"black"}}><SidebarOption Icon={LogoutIcon } text="Logout"/></Link> 
 
         <button className='tweet'>Tweet</button>  
 
