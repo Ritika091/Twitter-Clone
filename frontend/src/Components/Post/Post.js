@@ -8,6 +8,7 @@ import FavoriteBorderSharpIcon from '@mui/icons-material/FavoriteBorderSharp';
 import ChatBubbleOutlineOutlinedIcon from '@mui/icons-material/ChatBubbleOutlineOutlined';
 import RepeatOutlinedIcon from '@mui/icons-material/RepeatOutlined';
 import PublishIcon from '@mui/icons-material/Publish';
+import FavoriteIcon from '@mui/icons-material/Favorite';
 export default function Post() {
 
     const [data, setData] = useState([]);
@@ -26,14 +27,65 @@ export default function Post() {
             .catch(err => console.log(err))
     }, [data])
 
-        
+
+    const likePost= (id) =>{
+        fetch("http://localhost:5000/like", {
+            method:"put",
+            headers:{
+                'Content-Type':'application/json',
+                Authorization:"Bearer "+localStorage.getItem("jwt")
+              },
+              body:JSON.stringify({
+                postId:id
+              })
+        }).then(res=>res.json())
+        .then((result)=>{
+            const newData=data.map((posts)=>{
+                if(posts._id==result._id){
+                    return result
+                }
+                else{
+                    return posts
+                }
+            })
+            setData(newData)
+            console.log(result)
+        })
+    }
+
+
+    
+    const unlikePost= (id) =>{
+        fetch("http://localhost:5000/unlike", {
+            method:"put",
+            headers:{
+                'Content-Type':'application/json',
+                'Authorization':"Bearer "+localStorage.getItem("jwt")
+              },
+              body:JSON.stringify({
+                postId:id
+              })
+        }).then(res=>res.json())
+        .then((result)=>{
+            const newData=data.map((posts)=>{
+                if(posts._id==result._id){
+                    return result
+                }
+                else{
+                    return posts
+                }
+            })
+            setData(newData)
+            console.log(result)
+        })
+    }
                 return (
                     <>
                 {
                     data.map(posts=>(
                         <div className='Post'>
                         <div className="PostAvatar">
-                             <Avatar src={ProfileLo} />
+                             <Avatar src={ProfileLo}/>
                          </div>
                          <div className="PostBody">
                             <div className="PostHeader">
@@ -55,8 +107,15 @@ export default function Post() {
                     <div className="PostFooter">
                         <ChatBubbleOutlineOutlinedIcon fontSize='small' className='FooterIcon' />
                         <RepeatOutlinedIcon fontSize='small' className='FooterIcon' />
-                        <FavoriteBorderSharpIcon fontSize='small' className='FooterIcon' />
-                        <PublishIcon fontSize='small' className='FooterIcon' />
+                        {
+                            posts.likes.includes(JSON.parse(localStorage.getItem("user"))._id)
+                            ?
+                            ( <FavoriteIcon fontSize='small' className='FooterIcon'  sx={{ color: '#f91880' }}  onClick={()=>{unlikePost(posts._id)}} />)
+                            :
+                            (<FavoriteBorderSharpIcon fontSize='small' className='FooterIcon' onClick={()=>{likePost(posts._id)}}/>)
+                        }
+                        <p className='like'>{posts.likes.length}</p>
+                        <PublishIcon fontSize='small' className='FooterIcon' />             
                     </div>
                 </div>
             </div>

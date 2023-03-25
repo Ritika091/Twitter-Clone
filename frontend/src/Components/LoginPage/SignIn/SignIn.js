@@ -31,7 +31,8 @@ const[message,setMessage]=useState('');
       }else{
       setMessage(data.message);
       console.log(data)
-      localStorage.setItem("jwt",data)
+      localStorage.setItem("jwt",data.token)
+      localStorage.setItem("user",JSON.stringify(data.user))
       Navigate('/');
      console.log(data.message);
       }

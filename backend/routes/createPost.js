@@ -31,4 +31,51 @@ router.post("/createPost",requirelogin,(req,res)=>{
 //     console.log("hello auth")
 // })
 
+router.get("/myposts",requirelogin,(req,res)=>{
+    POST.find({postedBy:req.user._id})
+    .populate("postedBy", "_id name userName")
+    .then(myposts=>{
+        res.json(myposts)
+    })
+})
+
+router.put("/like", requirelogin, (req,res)=>{
+    POST.findByIdAndUpdate(req.body.postId, {
+        $push:{
+            likes:req.user._id
+        }
+    },{
+        new:true
+    }) .then(result=>res.json(result))
+    .catch(err=> res.status(422).json({error:err}))
+    // .exec((err,result)=>{
+    //     if(err){
+    //         return res.status(422).json({error:err})
+    //     }
+    //     else{
+    //         res.json(result)
+    //     }
+    // })
+})
+
+router.put("/unlike", requirelogin, (req,res)=>{
+    POST.findByIdAndUpdate(req.body.postId, {
+        $pull:{
+            likes:req.user._id
+        }
+    },{
+        new:true
+    }) .then(result=>res.json(result))
+    .catch(err=> res.status(422).json({error:err}))
+    // .exec((err,result)=>{
+    //     if(err){
+    //         return res.status(422).json({error:err})
+    //     }
+    //     else{
+    //         res.json(result)
+    //     }
+    // })
+})
+
+
 module.exports=router

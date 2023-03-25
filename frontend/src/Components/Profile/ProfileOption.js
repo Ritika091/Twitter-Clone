@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useState,useEffect} from 'react'
 import './Profile.css'
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 import twitterprofile from '../../assets/twitterprofile.webp'
@@ -11,6 +11,21 @@ import {
   } from "react-twitter-embed"
 
 export default function ProfileOption() {
+  const[pic,setPic]=useState("")
+  useEffect(()=>{
+    fetch("http://localhost:5000/myposts",{
+      headers:{
+        'Content-Type':'application/json',
+        'Authorization':"Bearer "+localStorage.getItem("jwt")
+      }
+    })
+    .then(res=>res.json())
+    .then((result)=>{
+      setPic(result)
+      console.log(pic)
+    })
+  },[])
+
   return (
     <div className='ProfileOption'>
         <div className="ProfileHeader">
@@ -56,10 +71,11 @@ export default function ProfileOption() {
             </div>
             </div>
 
+
             <div className="ProfileContainer">
-            <TwitterTweetEmbed tweetId={"1619958409922768896"}/>
+                  <TwitterTweetEmbed tweetId={"166684587878455458"}/>
+                {/* <img src={pics.img} alt="" /> */}
             </div>
-        
     </div>
   )
 }
