@@ -3,16 +3,16 @@ import './Post.css'
 import { Avatar } from '@mui/material'
 import ProfileLo from '../../assets/profileLogo.jpg'
 import VerifiedIcon from '@mui/icons-material/Verified';
-import PostImg from '../../assets/postImg.jfif'
+// import PostImg from '../../assets/postImg.jfif'
 import FavoriteBorderSharpIcon from '@mui/icons-material/FavoriteBorderSharp';
 import ChatBubbleOutlineOutlinedIcon from '@mui/icons-material/ChatBubbleOutlineOutlined';
 import RepeatOutlinedIcon from '@mui/icons-material/RepeatOutlined';
 import PublishIcon from '@mui/icons-material/Publish';
 import FavoriteIcon from '@mui/icons-material/Favorite';
+import Comment from '../Comment/Comment';
 export default function Post() {
-
+    const[openComment, setOpenComment]=useState(false);
     const [data, setData] = useState([]);
-
     useEffect(() => {
         // fetching all the posts
         fetch("http://localhost:5000/allposts", {
@@ -105,7 +105,7 @@ export default function Post() {
                         <img src={posts.photo} alt="" />
             
                     <div className="PostFooter">
-                        <ChatBubbleOutlineOutlinedIcon fontSize='small' className='FooterIcon' />
+                        <ChatBubbleOutlineOutlinedIcon fontSize='small' className='FooterIcon' onClick={()=>{setOpenComment(true)}} />
                         <RepeatOutlinedIcon fontSize='small' className='FooterIcon' />
                         {
                             posts.likes.includes(JSON.parse(localStorage.getItem("user"))._id)
@@ -118,6 +118,7 @@ export default function Post() {
                         <PublishIcon fontSize='small' className='FooterIcon' />             
                     </div>
                 </div>
+                {openComment && <Comment closeComment={setOpenComment}/> }
             </div>
                     ))
                 }   

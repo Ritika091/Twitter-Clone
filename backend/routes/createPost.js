@@ -48,14 +48,6 @@ router.put("/like", requirelogin, (req,res)=>{
         new:true
     }) .then(result=>res.json(result))
     .catch(err=> res.status(422).json({error:err}))
-    // .exec((err,result)=>{
-    //     if(err){
-    //         return res.status(422).json({error:err})
-    //     }
-    //     else{
-    //         res.json(result)
-    //     }
-    // })
 })
 
 router.put("/unlike", requirelogin, (req,res)=>{
@@ -67,15 +59,20 @@ router.put("/unlike", requirelogin, (req,res)=>{
         new:true
     }) .then(result=>res.json(result))
     .catch(err=> res.status(422).json({error:err}))
-    // .exec((err,result)=>{
-    //     if(err){
-    //         return res.status(422).json({error:err})
-    //     }
-    //     else{
-    //         res.json(result)
-    //     }
-    // })
 })
 
+router.put("/comment",requirelogin,(req,res)=>{
+    const comment={
+        comment:req.body.text,
+        postedBy:req.user._id
+    }
+    POST.findByIdAndUpdate(req.body.postId,{
+        $push:{comments:comment}
+    },{
+        new:true
+    })
+    .then(result=>res.json(result))
+    .catch(err=> res.status(422).json({error:err}))
+})
 
 module.exports=router

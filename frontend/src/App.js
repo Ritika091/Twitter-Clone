@@ -1,5 +1,5 @@
 import './App.css';
-import LoginPage from './Components/LoginPage/Login';
+// import LoginPage from './Components/LoginPage/Login';
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import Home from './Components/Home/Home';
 import SignUp from './Components/LoginPage/SignUp/SignUp';

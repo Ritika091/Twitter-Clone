@@ -1,0 +1,76 @@
+.darkBg1{
+    /* background-color: rgba(128, 128, 128, 0.477); */
+    backdrop-filter: brightness(93%);
+    width: 100vw;
+    height: 100vh;
+    z-index: 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    position: absolute;
+    overflow-x: hidden;
+}
+.centered1{
+    position: fixed;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.CommentModal {
+    width: 38rem;
+    height: 20rem;
+    background: rgba(255,255,255,1.00);
+    z-index: 10;
+    border-radius: 16px;
+  }
+  .CommentBox{
+    margin-top: 4rem;
+    display: flex;
+  }
+  
+  .closebtn{
+    margin-top: 1rem;
+    margin-left: 1rem;
+    cursor: pointer;
+  }
+  .Avatar{
+    margin-left: 1.5rem;
+    width: 3rem;
+    height: 3rem;
+  }
+  .CommentBox textarea{
+    width: 100%;
+    border: none;
+    outline: none;
+    padding: 10px 20px;
+    font-size: 20px;
+    overflow: hidden;
+  }
+  .CommentBox ::placeholder{
+    font-size: 20px;
+    color:#536471;
+    padding:  0 2px;
+    font-family: "TwitterChirp",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+}
+.Replybtn {
+    background-color: rgb(29, 155, 240);
+    margin-top: 5rem;
+    margin-left: 30rem;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 15px;
+    padding: 0.8rem 2rem;
+    border-radius: 5rem;
+    border: none;
+    color: #fff;
+  }
+  
+
+
+
+
+
+
+
+  
