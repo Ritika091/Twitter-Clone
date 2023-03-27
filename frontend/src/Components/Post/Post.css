@@ -48,6 +48,11 @@
     cursor: pointer;
 }
 .like{
-    margin-left: -6rem;
+    margin-left: -5rem;
     color: #f91880;
+}
+.commentP{
+    margin-left: -5rem;
+    font-size: 12px;
+    margin-top: 4px;
 }

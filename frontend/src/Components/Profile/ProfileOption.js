@@ -10,8 +10,19 @@ import {
     TwitterTweetEmbed,
   } from "react-twitter-embed"
 
+  import ProfileLo from '../../assets/profileLogo.jpg'
+  import PostImg from '../../assets/postImg.jfif'
+  import FavoriteBorderSharpIcon from '@mui/icons-material/FavoriteBorderSharp';
+  import ChatBubbleOutlineOutlinedIcon from '@mui/icons-material/ChatBubbleOutlineOutlined';
+  import RepeatOutlinedIcon from '@mui/icons-material/RepeatOutlined';
+  import PublishIcon from '@mui/icons-material/Publish';
+  import FavoriteIcon from '@mui/icons-material/Favorite';
+
+
+
 export default function ProfileOption() {
-  const[pic,setPic]=useState("")
+  const[posts,setPosts]=useState([]);
+  // const[pic,setPic]=useState("")
   useEffect(()=>{
     fetch("http://localhost:5000/myposts",{
       headers:{
@@ -21,8 +32,10 @@ export default function ProfileOption() {
     })
     .then(res=>res.json())
     .then((result)=>{
-      setPic(result)
-      console.log(pic)
+      // setPic(result)
+      // console.log(pic)
+      console.log(result)
+      setPosts(result)
     })
   },[])
 
@@ -72,10 +85,56 @@ export default function ProfileOption() {
             </div>
 
 
-            <div className="ProfileContainer">
-                  <TwitterTweetEmbed tweetId={"166684587878455458"}/>
-                {/* <img src={pics.img} alt="" /> */}
-            </div>
+            {/* <div className="ProfileContainer">
+                  <TwitterTweetEmbed tweetId={"1619958409922768896"}/>
+            </div> */}
+            
+            {posts.map(data=>(
+              <div className='Post'>
+              <div className="PostAvatar">
+                   <Avatar src={ProfileLo}/>
+               </div>
+               <div className="PostBody">
+                  <div className="PostHeader">
+                      <div className="PostHeaderText">
+                          <h3>{data.postedBy.name}{"  "}
+                              <span>
+                              {data.postedBy.userName}
+                                  {/* @trunarla . Mar 14 */}
+                              </span>
+                          </h3>
+                          </div>
+                  <div className="PostHeaderDescription">
+                      <p>{data.body}</p>
+                  </div>
+              </div>
+              <img src={data.photo} alt="" />
+  
+          <div className="PostFooter">
+              <ChatBubbleOutlineOutlinedIcon fontSize='small' className='FooterIcon' />
+              <RepeatOutlinedIcon fontSize='small' className='FooterIcon' />
+              {/* {
+                  posts.likes.includes(JSON.parse(localStorage.getItem("user"))._id)
+                  ?
+                  (  */}
+                    <FavoriteIcon fontSize='small' className='FooterIcon'  sx={{ color: '#f91880' }}  
+                    // onClick={()=>{unlikePost(posts._id)}} 
+                    />
+                    {/* ) */}
+                  {/* :
+                  (<FavoriteBorderSharpIcon fontSize='small' className='FooterIcon' onClick={()=>{likePost(posts._id)}}/>)
+              } */}
+              {/* <p className='like'>{posts.likes.length}</p> */}
+              <PublishIcon fontSize='small' className='FooterIcon' />             
+          </div>
+      </div>
+  </div>
+
+            ))}
+                    
+
+
+
     </div>
   )
 }

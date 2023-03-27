@@ -32,7 +32,7 @@ router.post("/createPost",requirelogin,(req,res)=>{
 // })
 
 router.get("/myposts",requirelogin,(req,res)=>{
-    POST.find({postedBy:req.user._id})
+    POST.find({postedBy:req.user._id}).sort({"_id":-1})
     .populate("postedBy", "_id name userName")
     .then(myposts=>{
         res.json(myposts)

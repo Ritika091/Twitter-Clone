@@ -106,6 +106,7 @@ export default function Post() {
             
                     <div className="PostFooter">
                         <ChatBubbleOutlineOutlinedIcon fontSize='small' className='FooterIcon' onClick={()=>{setOpenComment(true)}} />
+                        <p className='commentP'>View all comments</p>
                         <RepeatOutlinedIcon fontSize='small' className='FooterIcon' />
                         {
                             posts.likes.includes(JSON.parse(localStorage.getItem("user"))._id)
