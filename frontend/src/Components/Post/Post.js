@@ -10,6 +10,7 @@ import RepeatOutlinedIcon from '@mui/icons-material/RepeatOutlined';
 import PublishIcon from '@mui/icons-material/Publish';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import Comment from '../Comment/Comment';
+
 export default function Post() {
     const[openComment, setOpenComment]=useState(false);
     const [data, setData] = useState([]);
@@ -25,7 +26,7 @@ export default function Post() {
                 console.log(result);
             })
             .catch(err => console.log(err))
-    }, [data])
+    }, [])
 
 
     const likePost= (id) =>{
@@ -119,7 +120,7 @@ export default function Post() {
                         <PublishIcon fontSize='small' className='FooterIcon' />             
                     </div>
                 </div>
-                {openComment && <Comment closeComment={setOpenComment}/> }
+                {openComment && <Comment postDetails={posts} closeComment={setOpenComment}/> }
             </div>
                     ))
                 }   

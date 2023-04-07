@@ -24,5 +24,5 @@ mongoose.connection.on("error",()=>{
 
 
 app.listen(port,()=>{
-    console.log("Serving running on port "+port)
+    console.log("Server running on port "+port)
 })

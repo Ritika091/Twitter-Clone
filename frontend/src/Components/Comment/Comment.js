@@ -4,7 +4,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import { Avatar } from '@mui/material'
 import ProfileLogo from '../../assets/profileLogo.jpg'
 
-export default function Comment({closeComment}) {
+export default function Comment({closeComment,postDetails}) {
   const[comment,setComment]=useState()
   const [data, setData] = useState([]);
   const makeComment=(text,id)=>{
@@ -20,15 +20,15 @@ export default function Comment({closeComment}) {
               })
         }).then(res=>res.json())
         .then((result)=>{
-            const newData=data.map((posts)=>{
-                if(posts._id==result._id){
-                    return result
-                }
-                else{
-                    return posts
-                }
-            })
-            setData(newData)
+            // const newData=data.map((posts)=>{
+            //     if(posts._id==result._id){
+            //         return result
+            //     }
+            //     else{
+            //         return posts
+            //     }
+            // })
+            // setData(newData)
             console.log(result)
         })
   }
@@ -43,7 +43,7 @@ export default function Comment({closeComment}) {
        <Avatar src={ProfileLogo} className="Avatar"/>
        <textarea value={comment} onChange={(e)=>{setComment(e.target.value)}} type="text" placeholder="Tweet your reply" />
        </div>
-       <button className='Replybtn' onClick={()=>{makeComment(comment,posts._id)}} >Reply</button>
+       <button className='Replybtn' onClick={()=>{makeComment(comment,postDetails._id)}} >Reply</button>
     </div>
     </div>
     
