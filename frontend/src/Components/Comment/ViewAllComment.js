@@ -4,9 +4,9 @@ import CloseIcon from '@mui/icons-material/Close';
 import { Avatar } from '@mui/material'
 import ProfileLogo from '../../assets/profileLogo.jpg'
 
-export default function Comment({closeComment,postDetails}) {
-  const[comment,setComment]=useState()
-  // const [data, setData] = useState([]);
+export default function ViewAllComment({closeViewAllComment,postDetails}) {
+  const[item,setItem]=useState([]);
+//   const [data, setData] = useState([]);
   const makeComment=(text,id)=>{
     fetch("http://localhost:5000/comment", {
             method:"put",
@@ -20,6 +20,15 @@ export default function Comment({closeComment,postDetails}) {
               })
         }).then(res=>res.json())
         .then((result)=>{
+          const updatedData= data.map((posts)=>{
+            if(posts._id===result._id){
+              return result;
+            }
+            else{
+              return posts;
+            }
+          })
+          setData(updatedData);
             console.log(result)
         })
   }
@@ -27,28 +36,15 @@ export default function Comment({closeComment,postDetails}) {
     <div className="darkBg1">
     <div className="centered1">
     <div className='CommentModal'>
-       <CloseIcon className='closebtn' onClick={()=>closeComment(false)} />
+       <CloseIcon className='closebtn' onClick={()=>closeViewAllComment(false)} />
        <div className="CommentBox">
        <Avatar src={ProfileLogo} className="Avatar"/>
-       <textarea value={comment} onChange={(e)=>{setComment(e.target.value)}} type="text" placeholder="Tweet your reply" />
+       <h3>RAM</h3>
        </div>
-       <button className='Replybtn' onClick={()=>{makeComment(comment,postDetails._id)}} >Reply</button>
+       <div className='allcomments'>
+       <p>lorem</p>
+       </div>
     </div>
-
-{/* show comment */}
-
-  <div className='ShowComment'>
-  <CloseIcon className='closebtn' />
-  <div className="CommentBox">
-  <Avatar src={ProfileLogo} className="Avatar"/>
-  <h3>RAM</h3>
-  </div>
-  <div className='allcomments'>
-  <p>lorem</p>
-  </div>
-</div>
-
-    
     </div>
 </div>
 

@@ -10,9 +10,11 @@ import RepeatOutlinedIcon from '@mui/icons-material/RepeatOutlined';
 import PublishIcon from '@mui/icons-material/Publish';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import Comment from '../Comment/Comment';
+// import ViewAllComment from '../Comment/ViewAllComment';
 
 export default function Post() {
     const[openComment, setOpenComment]=useState(false);
+    const[openViewAllComment,setOpenViewAllComment] = useState(false);
     const [data, setData] = useState([]);
     useEffect(() => {
         // fetching all the posts
@@ -27,6 +29,17 @@ export default function Post() {
             })
             .catch(err => console.log(err))
     }, [])
+
+
+     // show and hide comments
+     const toggleComment=()=>{
+        if(openViewAllComment){
+            setOpenViewAllComment(false);
+        }
+        else{
+            setOpenViewAllComment(true);
+        }
+    }
 
 
     const likePost= (id) =>{
@@ -107,7 +120,7 @@ export default function Post() {
             
                     <div className="PostFooter">
                         <ChatBubbleOutlineOutlinedIcon fontSize='small' className='FooterIcon' onClick={()=>{setOpenComment(true)}} />
-                        <p className='commentP'>View all comments</p>
+                        <p className='commentP' onClick={()=>{toggleComment()}}>View all comments</p>
                         <RepeatOutlinedIcon fontSize='small' className='FooterIcon' />
                         {
                             posts.likes.includes(JSON.parse(localStorage.getItem("user"))._id)
@@ -121,6 +134,7 @@ export default function Post() {
                     </div>
                 </div>
                 {openComment && <Comment postDetails={posts} closeComment={setOpenComment}/> }
+                {openViewAllComment && <Comment postDetails={posts} closeViewAllComment={setOpenViewAllComment}/> }
             </div>
                     ))
                 }   

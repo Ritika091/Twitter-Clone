@@ -8,24 +8,29 @@
     left: 50%;
     transform: translate(-50%,-50%);
     position: absolute;
-    overflow-x: hidden;
+}
+.darkBg1::-webkit-scrollbar {
+  display: none;
 }
 .centered1{
     position: fixed;
-    top: 35%;
+    top: 40%;
     left: 50%;
     transform: translate(-50%,-50%);
 }
 
-.CommentModal {
+.CommentModal,.ShowComment {
     width: 38rem;
     height: 20rem;
     background: rgba(255,255,255,1.00);
     z-index: 10;
     border-radius: 16px;
   }
+  .ShowComment{
+    display: none;
+  }
   .CommentBox{
-    margin-top: 4rem;
+    margin-top: 3rem;
     display: flex;
   }
   
@@ -66,8 +71,12 @@
     color: #fff;
   }
   
-
-
+  .CommentBox h3{
+    margin: 10px 20px;
+  }
+  .allcomments p{
+    margin: 0 5.2rem;
+  }
 
 
 

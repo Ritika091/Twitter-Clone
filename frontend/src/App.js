@@ -6,6 +6,7 @@ import SignUp from './Components/LoginPage/SignUp/SignUp';
 import SignIn from './Components/LoginPage/SignIn/SignIn';
 import Profile from './Components/Profile/Profile';
 import LogoutModal from './Components/LogoutModal/LogoutModal';
+import UserProfile from './Components/UserProfile/UserProfile';
 
 function App() {
   return (
@@ -16,8 +17,9 @@ function App() {
         <Route path="/" element={<Home/>}></Route>
         <Route path="/signup" element={<SignUp/>}></Route>
         <Route path="/signin" element={<SignIn/>}></Route>
-        <Route path="/profile" element={<Profile/>}></Route>
+        <Route exact path="/profile" element={<Profile/>}></Route>
         <Route path="/logout" element={<LogoutModal/>}></Route>
+        <Route path="/profile/:userid" element={<UserProfile/>}></Route>
       </Routes>
     </div>
     </BrowserRouter>

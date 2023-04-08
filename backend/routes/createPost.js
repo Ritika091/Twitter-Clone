@@ -8,6 +8,7 @@ const POST=mongoose.model("POST")
 router.get("/allposts", requirelogin, (req,res)=>{
     POST.find().sort({"_id":-1})
     .populate("postedBy", "_id name userName")
+    .populate("comments.postedBy","_id name")
     .then(posts=>res.json(posts))
     .catch(err=>console.log(err))
 })
@@ -75,5 +76,6 @@ router.put("/comment",requirelogin,(req,res)=>{
     .then(result=>res.json(result))
     .catch(err=> res.status(422).json({error:err}))
 })
+
 
 module.exports=router

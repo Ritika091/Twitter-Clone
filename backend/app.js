@@ -12,6 +12,7 @@ mongoose.connect(mongoUrl)
 app.use(cors())
 require('./models/post')
 app.use(require("./routes/createPost"))
+app.use(require('./routes/user'))
 
 
 mongoose.connection.on("connected",()=>{
