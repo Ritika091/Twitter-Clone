@@ -58,3 +58,7 @@
     cursor: pointer;
     font-weight: 900;
 }
+.PostHeaderText h3 a{
+    text-decoration: none;
+    color: black;
+}

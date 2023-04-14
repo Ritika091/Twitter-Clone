@@ -1,6 +1,7 @@
 .ProfileOption{
     border-right: 1px solid #e6ecf0;
     margin-left: 26rem;
+    width: 36rem;
 }
 .Profile{
     display: flex;

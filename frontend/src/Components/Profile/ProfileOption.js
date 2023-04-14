@@ -18,8 +18,6 @@ import {
   import PublishIcon from '@mui/icons-material/Publish';
   import FavoriteIcon from '@mui/icons-material/Favorite';
 
-
-
 export default function ProfileOption() {
   const[posts,setPosts]=useState([]);
   // const[pic,setPic]=useState("")
@@ -40,9 +38,11 @@ export default function ProfileOption() {
   },[])
 
   return (
-    <div className='ProfileOption'>
+    <div className='ProfileOption'>      
         <div className="ProfileHeader">
-            <h2>Ritika Saxena</h2>
+            <h2>
+              Ritika Saxena
+            </h2>
             <p>49 Tweets</p>
             <KeyboardBackspaceIcon className='Arrow'/>
         </div>
@@ -84,10 +84,6 @@ export default function ProfileOption() {
             </div>
             </div>
 
-
-            {/* <div className="ProfileContainer">
-                  <TwitterTweetEmbed tweetId={"1619958409922768896"}/>
-            </div> */}
             
             {posts.map(data=>(
               <div className='Post'>
@@ -99,7 +95,7 @@ export default function ProfileOption() {
                       <div className="PostHeaderText">
                           <h3>{data.postedBy.name}{"  "}
                               <span>
-                              {data.postedBy.userName}
+                              @{data.postedBy.userName}
                                   {/* @trunarla . Mar 14 */}
                               </span>
                           </h3>
@@ -113,27 +109,14 @@ export default function ProfileOption() {
           <div className="PostFooter">
               <ChatBubbleOutlineOutlinedIcon fontSize='small' className='FooterIcon' />
               <RepeatOutlinedIcon fontSize='small' className='FooterIcon' />
-              {/* {
-                  posts.likes.includes(JSON.parse(localStorage.getItem("user"))._id)
-                  ?
-                  (  */}
-                    <FavoriteIcon fontSize='small' className='FooterIcon'  sx={{ color: '#f91880' }}  
-                    // onClick={()=>{unlikePost(posts._id)}} 
-                    />
-                    {/* ) */}
-                  {/* :
-                  (<FavoriteBorderSharpIcon fontSize='small' className='FooterIcon' onClick={()=>{likePost(posts._id)}}/>)
-              } */}
+                    <FavoriteIcon fontSize='small' className='FooterIcon'  sx={{ color: '#f91880' }}  />
               {/* <p className='like'>{posts.likes.length}</p> */}
               <PublishIcon fontSize='small' className='FooterIcon' />             
           </div>
       </div>
   </div>
 
-            ))}
-                    
-
-
+             ))} 
 
     </div>
   )

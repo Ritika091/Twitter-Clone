@@ -22,11 +22,12 @@ import { useParams } from 'react-router-dom';
 
 export default function UserProfileOption() {
     const {userid} =useParams();
+    console.log(userid)
     const[user,setUser]=useState("");
-  const[posts,setPosts]=useState([]);
+    const[posts,setPosts]=useState([]);
   
   useEffect(()=>{
-    fetch(`http://localhost:5000/user.${userid}`,{
+    fetch(`http://localhost:5000/user/${userid}`,{
       headers:{
         'Content-Type':'application/json',
         'Authorization':"Bearer "+localStorage.getItem("jwt")
@@ -43,8 +44,8 @@ export default function UserProfileOption() {
   return (
     <div className='ProfileOption'>
         <div className="ProfileHeader">
-            <h2>Ritika Saxena</h2>
-            <p>49 Tweets</p>
+            <h2>{user.name}</h2>
+            <p>{posts.length} Tweets</p>
             <KeyboardBackspaceIcon className='Arrow'/>
         </div>
         <div className="ProfileImg">
@@ -58,8 +59,8 @@ export default function UserProfileOption() {
             </div>
 
             <div className="ProfileContent">
-            <h2>Ritika Saxena</h2>
-           <p>@ritikasaxena09</p>
+            <h2>{user.name}</h2>
+            <p>@{user.userName}</p>
            <br />
            <p>Life does not get better by chance. It gets better by change🙂</p>
             <br />
@@ -94,9 +95,9 @@ export default function UserProfileOption() {
                <div className="PostBody">
                   <div className="PostHeader">
                       <div className="PostHeaderText">
-                          <h3>{data.postedBy.name}{"  "}
-                              <span>
-                              {data.postedBy.userName}
+                          <h3>{user.name}{"  "}
+                              <span> 
+                              @{user.userName}
                                   {/* @trunarla . Mar 14 */}
                               </span>
                           </h3>
@@ -116,7 +117,7 @@ export default function UserProfileOption() {
       </div>
   </div>
 
-            ))}
+             ))} 
     </div>
   )
 }

@@ -11,7 +11,7 @@ import PublishIcon from '@mui/icons-material/Publish';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import Comment from '../Comment/Comment';
 // import ViewAllComment from '../Comment/ViewAllComment';
-
+import { Link } from 'react-router-dom';
 export default function Post() {
     const[openComment, setOpenComment]=useState(false);
     const[openViewAllComment,setOpenViewAllComment] = useState(false);
@@ -104,7 +104,9 @@ export default function Post() {
                          <div className="PostBody">
                             <div className="PostHeader">
                                 <div className="PostHeaderText">
-                                    <h3>{posts.postedBy.name}{"  "}
+                                <h3>
+                                   <Link to={`profile/${posts.postedBy._id}`}>{posts.postedBy.name}{"  "}</Link>
+                                  
                                         <span>
                                         <VerifiedIcon fontSize="small" color='primary' />
                                         {posts.postedBy.userName}
