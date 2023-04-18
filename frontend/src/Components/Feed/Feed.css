@@ -37,5 +37,24 @@
 .subFeed_header h3:first-child{
     font-weight: 700;
     color: black;
+    /* border-bottom: 4px solid rgb(29, 155, 240); */
+}
+.subFeed_header h3.activeLink{
     border-bottom: 4px solid rgb(29, 155, 240);
+}
+.RespFeed{
+    display: none;
+}
+
+@media(max-width:991px){
+    .RespFeed{
+        display: block;
+    }
+    .Feed{
+        display: none;
+    }
+    .Feed_header {
+        width: 100%;
+        z-index: 1;
+    }
 }

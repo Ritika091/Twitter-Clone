@@ -62,8 +62,17 @@
     text-decoration: none;
     color: black;
 }
+.RespMyFollowing{
+    display: none;
+}
 
 @media(max-width:991px){
+    .RespMyFollowing{
+        display: block;
+    }
+    .MyFollowing{
+        display: none;
+    }
     .Post {
         margin: 8px 20px;
         position: relative;

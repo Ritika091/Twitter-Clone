@@ -12,9 +12,11 @@ import { Link } from 'react-router-dom'
 import { Avatar } from '@mui/material'
 import ProfileLo from '../../assets/profileLogo.jpg'
 import LogoutIcon from '@mui/icons-material/Logout';
+import tweet from '../../assets/tweet.png'
 
 export default function Sidebar() {
   return (
+    <>
     <div className='Sidebar'>
         <img className='twitlogo' src={logo} alt="" />
         <Link to="/" style={{textDecoration: "none", color:"black"}}>  <SidebarOption active Icon={HomeIcon} text="Home"/></Link> 
@@ -39,5 +41,17 @@ export default function Sidebar() {
           </div>     
     </div>
 
+    <div className="RespSidebar">
+    <div className="Nav">
+    <Link to="/" style={{textDecoration: "none", color:"black"}}>  <HomeIcon className='BottomLogo'/></Link>
+    <Link to="/createPost" style={{textDecoration: "none", color:"black"}}>  <img className='tweetIcon' src={tweet} alt="" /></Link> 
+      <Link to="/profile" style={{textDecoration: "none", color:"black"}}>   <PersonOutlineOutlinedIcon className='BottomLogo'/></Link>
+    <Link to="/message"  style={{textDecoration: "none", color:"black"}}>< MailOutlineIcon className='BottomLogo'/></Link>
+
+      <Link to="/logout" style={{textDecoration: "none", color:"black"}}> <LogoutIcon className='BottomLogo'/></Link>
+
+    </div>
+    </div>
+    </>
   )
 }

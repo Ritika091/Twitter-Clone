@@ -48,3 +48,23 @@ input[type="file"] {
 .output{
     width: 50%;
 }
+.cancelTweet{
+    display: none !important;
+}
+
+
+@media(max-width:991px){
+.Tweet_input textarea {
+    padding: 31px 20px;
+}
+.Tweetbtn{
+    margin-left: 10rem;
+    position: relative;
+    top: -11rem;
+}
+.cancelTweet{
+    display: block !important;
+    position: relative;
+    top: -14rem;
+}
+}

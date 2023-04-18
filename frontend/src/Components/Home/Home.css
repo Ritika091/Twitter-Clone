@@ -3,3 +3,26 @@
     display: flex;
     margin-top: 15px;
 }
+.RespHome{
+    display: none;
+}
+
+@media(max-width:991px){
+    .Home{
+        display: none;
+    }
+    .RespHome{
+        display: block;
+    }
+    .twitlogo{
+        width: 14%;
+        position: sticky;
+        left: 8rem;
+        }
+        .img{
+            position: sticky;
+            top: 0;
+            z-index: 1;
+            background: white;
+        }
+}

@@ -62,3 +62,35 @@
 .ProfLogOut div p{
     color: rgb(83, 100, 113);
 }
+.RespSidebar{
+    display: none;
+}
+
+@media(max-width:991px){
+    .Sidebar{
+        display: none;
+    }
+    .RespSidebar{
+        display: block;
+    }
+    .tweetIcon{
+        width: 2rem;
+        /* margin-left: 2.4rem;
+        margin-top: 1rem; */
+        padding: 2rem 1.5rem;
+    }
+    .Nav{
+        display: flex;
+    position: fixed;
+    bottom: 0;
+    background-color: white;
+    width: 22rem;
+    height: 5rem;
+    }
+    .BottomLogo{
+        /* margin-left: 2rem;
+        margin-top: 1rem; */
+        padding: 2rem 1.5rem;
+    }
+
+}

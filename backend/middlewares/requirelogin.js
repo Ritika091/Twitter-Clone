@@ -15,7 +15,9 @@ module.exports=(req,res,next)=>{
             return res.status(401).json({error:"You must have logged in"})
         }
         const {_id}=payload
-        USER.findById(_id).then(userData=>{
+        USER.findById(_id)
+        .populate("_id name userName Photo BgPhoto")
+        .then(userData=>{
             // console.log(userData)
             req.user=userData
             next()

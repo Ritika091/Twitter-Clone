@@ -4,17 +4,35 @@ import ProfileLogo from '../../assets/profileLogo.jpg'
 import './Tweet.css'
 import InsertPhotoIcon from '@mui/icons-material/InsertPhoto';
 import {useNavigate} from 'react-router-dom';
+import ClearIcon from '@mui/icons-material/Clear';
 
 export default function Tweet() {
   const [body,setBody]=useState("")
   const [image,setImage]=useState("")
   const [url,setUrl] = useState("")
+  const [userphoto,setUserphoto] = useState("")
 const navigate=useNavigate();
   
 
+useEffect(()=>{
+  fetch(`http://localhost:5000/user/${JSON.parse(localStorage.getItem("user"))._id}`,{
+    headers:{
+      'Content-Type':'application/json',
+      'Authorization':"Bearer "+localStorage.getItem("jwt")
+    }
+  })
+  .then(res=>res.json())
+  .then((result)=>{
+    // setPic(result.post)
+    // console.log(pic)
+    console.log(result)
+    setUserphoto(result.user.Photo)
+  })
+},[])
+
+
   useEffect(()=>{
     // saving post to mongodb
-
     if(url){
     fetch("http://localhost:5000/createPost",{
       method:"post",
@@ -33,7 +51,6 @@ const navigate=useNavigate();
   },[url])
 
   // posting image to cloudinary
-
   const postDetails=()=>{
     console.log(body,image)
     const data=new FormData();
@@ -60,16 +77,13 @@ const navigate=useNavigate();
     <div className='Tweet'>
         
             <div className="Tweet_input">
-                <Avatar src={ProfileLogo}/>
-                {/* <input type="text" placeholder="What's happening?" /> */}
+                <Avatar src={userphoto?userphoto:""}/>
                 <textarea value={body} onChange={(e)=>{
                   setBody(e.target.value)
                 }} type="text" placeholder="What's happening?" />
             </div>
-
             
           <img
-
             id="output"
             // alt=""
           />
@@ -81,13 +95,15 @@ const navigate=useNavigate();
               setImage(e.target.files[0])
             }}/>
 
-
-           
            <button className='Tweetbtn' onClick={()=>{
             postDetails();
           navigate('/');
           }}>Tweet</button>
            
+           {/* <button className='cancelTweet'> */}
+            <ClearIcon className='cancelTweet' onClick={()=>{navigate('/'); }}/>
+            {/* </button> */}
+          
         
     </div>
   )

@@ -33,6 +33,7 @@
 .banner{
     width: 36rem;
     margin-top: -1rem;
+    height: 12rem;
 }
 .ProfPic{
     position: relative;
@@ -52,6 +53,7 @@
     font-size: 15px;
     line-height: 20px;
     font-weight: 700;
+    cursor: pointer;
 }
 .ProfileContent{
 margin-top: -4rem;
@@ -111,4 +113,40 @@ margin-left: 1rem;
 .ProfNav ul li:hover{
     background-color: rgb(210, 212, 214);
     cursor: pointer;
+}
+.RespProfile{
+    display: none;
+}
+
+@media(max-width:991px){
+    .Profile{
+        display: none;
+    }
+    .RespProfile{
+        display: block;
+    }
+    .ProfileOption {
+        margin-left: 0rem;
+        width: 21rem;
+        border: none;
+    }
+    .banner {
+        width: 21rem;
+    }
+    .ProfPic {
+        width: 90px !important;
+        height: 90px !important;
+        top: -4rem;
+        left: 0.5rem;
+    }
+    .ProfileContent{
+        width: 19rem;
+}
+.ProfNav ul{
+    width: 20rem;
+}
+.ProfPost{
+    margin-top: -6rem;
+    margin-bottom: 12rem;
+}
 }

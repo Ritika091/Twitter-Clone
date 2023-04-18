@@ -7,7 +7,7 @@ const POST=mongoose.model("POST")
 
 router.get("/allposts", requirelogin, (req,res)=>{
     POST.find().sort({"_id":-1})
-    .populate("postedBy", "_id name userName")
+    .populate("postedBy", "_id name userName Photo")
     .populate("comments.postedBy","_id name")
     .then(posts=>res.json(posts))
     .catch(err=>console.log(err))
@@ -47,7 +47,8 @@ router.put("/like", requirelogin, (req,res)=>{
         }
     },{
         new:true
-    }) .then(result=>res.json(result))
+    }) .populate("postedBy","_id name Photo")
+    .then(result=>res.json(result))
     .catch(err=> res.status(422).json({error:err}))
 })
 
@@ -58,7 +59,8 @@ router.put("/unlike", requirelogin, (req,res)=>{
         }
     },{
         new:true
-    }) .then(result=>res.json(result))
+    }).populate("postedBy","_id name Photo") 
+    .then(result=>res.json(result))
     .catch(err=> res.status(422).json({error:err}))
 })
 
@@ -73,9 +75,19 @@ router.put("/comment",requirelogin,(req,res)=>{
         new:true
     })
     .populate("comments.postedBy","_id name")
+    .populate("postedBy","_id name Photo")
     .then(result=>res.json(result))
     .catch(err=> res.status(422).json({error:err}))
 })
 
-
+// to show following posts
+router.get("/myfollowingpost",requirelogin,(req,res)=>{
+    POST.find({postedBy:{$in:req.user.following}}).sort({"_id":-1})
+    .populate("postedBy", "_id name userName")
+    .populate("comments.postedBy","_id name userName")
+    .then(posts=>{
+        res.json(posts)
+    })
+    .catch(err=>{console.log(err)})
+})
 module.exports=router

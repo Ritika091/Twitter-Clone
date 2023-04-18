@@ -75,3 +75,20 @@
 .message{
     color: red;
 }
+
+@media(max-width:991px){
+    .formContainer1 {
+        padding: 6px 30px;
+        width: 227px;
+        top: 56%;
+    }
+    .formContainer1 h2 {
+    margin-bottom: 4px;
+    font-size: 18px;
+    }
+    .formContainer1 button {
+        margin: 20px 0px;
+        font-size: 13px;
+    }
+
+}

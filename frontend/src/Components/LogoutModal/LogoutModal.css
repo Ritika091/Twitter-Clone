@@ -2,11 +2,12 @@
     background-color: rgba(0, 0, 0, 0.2);
     width: 100vw;
     height: 100vh;
-    z-index: 0;
+    z-index: 1;
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
     position: absolute;
+    overflow: hidden;
 }
 .centered{
     position: fixed;
@@ -96,4 +97,15 @@
   .cancelbtn:hover {
     box-shadow: none;
     background: rgba(15,20,25,0.1);
+  }
+
+
+  @media(max-width:991px){
+    
+.LogoutModal {
+  width: 311px;
+}
+.modalHeader img {
+  left: 8rem;
+}
   }

@@ -1,31 +1,71 @@
 import React,{useState,useEffect} from 'react'
-import '../Profile/Profile.css'
+// import '../Profile/Profile.css'
+import './UserProfile.css'
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 import twitterprofile from '../../assets/twitterprofile.webp'
 import { Avatar } from '@mui/material'
 import ProfImg from '../../assets/profileLogo.jpg'
 import CalendarMonthOutlinedIcon from '@mui/icons-material/CalendarMonthOutlined';
 import CakeOutlinedIcon from '@mui/icons-material/CakeOutlined';
-import {
-    TwitterTweetEmbed,
-  } from "react-twitter-embed"
-
   import ProfileLo from '../../assets/profileLogo.jpg'
-  import PostImg from '../../assets/postImg.jfif'
-  import FavoriteBorderSharpIcon from '@mui/icons-material/FavoriteBorderSharp';
   import ChatBubbleOutlineOutlinedIcon from '@mui/icons-material/ChatBubbleOutlineOutlined';
   import RepeatOutlinedIcon from '@mui/icons-material/RepeatOutlined';
   import PublishIcon from '@mui/icons-material/Publish';
   import FavoriteIcon from '@mui/icons-material/Favorite';
 import { useParams } from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 
 
 export default function UserProfileOption() {
+  const navigate=useNavigate();
+  var picLink="https://twirpz.files.wordpress.com/2015/06/twitter-avi-gender-balanced-figure.png"
     const {userid} =useParams();
     console.log(userid)
+    const[isFollow,setIsFollow]= useState(false);
     const[user,setUser]=useState("");
     const[posts,setPosts]=useState([]);
-  
+
+
+    // to follow user
+    const followUser=(userId)=>{
+      fetch("http://localhost:5000/follow",{
+        method:"put",
+        headers:{
+          'Content-Type':'application/json',
+           Authorization:"Bearer "+localStorage.getItem("jwt")
+        },
+        body:JSON.stringify({
+          followId:userId
+        })
+      })
+      .then((res)=>res.json())
+      .then((data)=>{
+        console.log(data);
+        setIsFollow(true)
+      })
+    }
+
+
+        // to unfollow user
+        const unfollowUser=(userId)=>{
+          fetch("http://localhost:5000/unfollow",{
+            method:"put",
+            headers:{
+              'Content-Type':'application/json',
+              'Authorization':"Bearer "+localStorage.getItem("jwt")
+            },
+            body:JSON.stringify({
+              followId:userId
+            })
+          })
+          .then((res)=>res.json())
+          .then((data)=>{
+            console.log(data)
+            setIsFollow(false)
+          })
+        }
+
+
   useEffect(()=>{
     fetch(`http://localhost:5000/user/${userid}`,{
       headers:{
@@ -38,22 +78,33 @@ export default function UserProfileOption() {
       console.log(result)
       setUser(result.user)
       setPosts(result.post)
+      if(result.user.followers.includes(JSON.parse(localStorage.getItem("user"))._id)){
+        setIsFollow(true)
+      }
     })
-  },[])
+  },[isFollow])
 
   return (
     <div className='ProfileOption'>
         <div className="ProfileHeader">
             <h2>{user.name}</h2>
             <p>{posts.length} Tweets</p>
-            <KeyboardBackspaceIcon className='Arrow'/>
+            <KeyboardBackspaceIcon className='Arrow' onClick={()=>{navigate('/'); }}/>
         </div>
         <div className="ProfileImg">
             <img src={twitterprofile} alt=""  className='banner'/>
-            <button className='Editbtn'>Edit profile</button>
+            <button className='Followbtn' 
+            onClick={()=>{
+              if(isFollow){
+                unfollowUser(user._id)
+              }
+              else{
+              followUser(user._id)}
+            }}>
+              {isFollow?"Unfollow":"Follow"}</button>
             <Avatar className='ProfPic'
              alt="Remy Sharp"
-            src={ProfImg}
+             src={user.Photo ? user.Photo : picLink}
             sx={{ width: 130, height: 130 }}
             />
             </div>
@@ -72,8 +123,8 @@ export default function UserProfileOption() {
             </div>
 
             <div className="Following">
-                <p><span>102 </span>Following</p>
-                <p><span>21 </span>Followers</p>
+                <p><span>{user.following?user.following.length:"0"} </span> Following</p>
+                <p><span>{user.followers?user.followers.length:"0"}</span> Followers</p>
             </div>
 
             <div className="ProfNav">
@@ -86,11 +137,13 @@ export default function UserProfileOption() {
             </div>
             </div>
 
-            
+            <section className='ProfPost'>
             {posts.map(data=>(
               <div className='Post'>
               <div className="PostAvatar">
-                   <Avatar src={ProfileLo}/>
+                   <Avatar 
+                   src={user.Photo ? user.Photo : picLink}
+                   />
                </div>
                <div className="PostBody">
                   <div className="PostHeader">
@@ -98,7 +151,6 @@ export default function UserProfileOption() {
                           <h3>{user.name}{"  "}
                               <span> 
                               @{user.userName}
-                                  {/* @trunarla . Mar 14 */}
                               </span>
                           </h3>
                           </div>
@@ -118,6 +170,7 @@ export default function UserProfileOption() {
   </div>
 
              ))} 
+             </section>
     </div>
   )
 }

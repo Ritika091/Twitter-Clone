@@ -6,11 +6,17 @@ import ProfileOption from './ProfileOption'
 
 export default function Profile() {
   return (
+    <>
     <div className='Profile'>
         <Sidebar/>
         <ProfileOption/>
         <Widget/>
-        
     </div>
+
+<div className='RespProfile'>
+<ProfileOption/>
+<Sidebar/>
+</div>
+</>
   )
 }

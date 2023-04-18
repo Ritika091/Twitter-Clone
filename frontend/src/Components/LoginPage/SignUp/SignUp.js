@@ -85,7 +85,7 @@ const[message,setMessage]=useState("");
             By signing up, you agree to the <a href="https://twitter.com/en/tos" target="_blank"> Terms of Service</a> and <a href="https://twitter.com/en/privacy" target="_blank"> Privacy Policy</a>, including <a href="https://help.twitter.com/en/rules-and-policies/twitter-cookies" target="_blank">Cookie Use.</a>
             </p>
             <br />
-            <p>Already have an account?<Link to="/signin">Sign in</Link></p>
+            <p className='respon'>Already have an account?<Link to="/signin">Sign in</Link></p>
             
         </div>
     </div>

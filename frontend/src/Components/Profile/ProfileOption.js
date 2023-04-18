@@ -6,10 +6,6 @@ import { Avatar } from '@mui/material'
 import ProfImg from '../../assets/profileLogo.jpg'
 import CalendarMonthOutlinedIcon from '@mui/icons-material/CalendarMonthOutlined';
 import CakeOutlinedIcon from '@mui/icons-material/CakeOutlined';
-import {
-    TwitterTweetEmbed,
-  } from "react-twitter-embed"
-
   import ProfileLo from '../../assets/profileLogo.jpg'
   import PostImg from '../../assets/postImg.jfif'
   import FavoriteBorderSharpIcon from '@mui/icons-material/FavoriteBorderSharp';
@@ -17,12 +13,29 @@ import {
   import RepeatOutlinedIcon from '@mui/icons-material/RepeatOutlined';
   import PublishIcon from '@mui/icons-material/Publish';
   import FavoriteIcon from '@mui/icons-material/Favorite';
+import ProfilePic from '../ProfilePic/ProfilePic';
+import {useNavigate} from 'react-router-dom';
 
 export default function ProfileOption() {
+  const navigate=useNavigate();
+  var picLink="https://twirpz.files.wordpress.com/2015/06/twitter-avi-gender-balanced-figure.png"
   const[posts,setPosts]=useState([]);
+  const[user,setUser]=useState("");
+  const[changePic,setChangePic]=useState(false)
   // const[pic,setPic]=useState("")
+
+  const changeProfile= ()=>{
+    if(changePic){
+      setChangePic(false)
+    }
+    else{
+      setChangePic(true)
+    }
+  }
+
+
   useEffect(()=>{
-    fetch("http://localhost:5000/myposts",{
+    fetch(`http://localhost:5000/user/${JSON.parse(localStorage.getItem("user"))._id}`,{
       headers:{
         'Content-Type':'application/json',
         'Authorization':"Bearer "+localStorage.getItem("jwt")
@@ -30,10 +43,11 @@ export default function ProfileOption() {
     })
     .then(res=>res.json())
     .then((result)=>{
-      // setPic(result)
+      // setPic(result.post)
+      setUser(result.user)
       // console.log(pic)
       console.log(result)
-      setPosts(result)
+      setPosts(result.post)
     })
   },[])
 
@@ -41,24 +55,24 @@ export default function ProfileOption() {
     <div className='ProfileOption'>      
         <div className="ProfileHeader">
             <h2>
-              Ritika Saxena
+              {JSON.parse(localStorage.getItem("user")).name}
             </h2>
-            <p>49 Tweets</p>
-            <KeyboardBackspaceIcon className='Arrow'/>
+            <p>{posts?posts.length:"0"} Tweets</p>
+            <KeyboardBackspaceIcon className='Arrow' onClick={()=>{navigate('/'); }}/>
         </div>
         <div className="ProfileImg">
-            <img src={twitterprofile} alt=""  className='banner'/>
-            <button className='Editbtn'>Edit profile</button>
+            <img src={user.BgPhoto ? user.BgPhoto : ""} alt="" style={{backgroundColor:"rgba(0, 0, 0, 0.3)"}}  className='banner'/>
+            <button className='Editbtn' onClick={changeProfile}>Edit profile</button>
             <Avatar className='ProfPic'
-             alt="Remy Sharp"
-            src={ProfImg}
+             alt="Remy Sharp" 
+            src={user.Photo ? user.Photo : picLink}
             sx={{ width: 130, height: 130 }}
             />
             </div>
 
             <div className="ProfileContent">
-            <h2>Ritika Saxena</h2>
-           <p>@ritikasaxena09</p>
+            <h2>{user.name}</h2>
+            <p>@{user.userName}</p>
            <br />
            <p>Life does not get better by chance. It gets better by change🙂</p>
             <br />
@@ -70,8 +84,8 @@ export default function ProfileOption() {
             </div>
 
             <div className="Following">
-                <p><span>102 </span>Following</p>
-                <p><span>21 </span>Followers</p>
+            <p><span>{user.following?user.following.length:"0"} </span> Following</p>
+                <p><span>{user.followers?user.followers.length:"0"}</span> Followers</p>
             </div>
 
             <div className="ProfNav">
@@ -84,18 +98,21 @@ export default function ProfileOption() {
             </div>
             </div>
 
+
+            <section className='ProfPost'>
             
             {posts.map(data=>(
               <div className='Post'>
               <div className="PostAvatar">
-                   <Avatar src={ProfileLo}/>
+                   <Avatar 
+                   src={user.Photo ? user.Photo : picLink}/>
                </div>
                <div className="PostBody">
                   <div className="PostHeader">
                       <div className="PostHeaderText">
-                          <h3>{data.postedBy.name}{"  "}
+                          <h3>{user.name}{"  "}
                               <span>
-                              @{data.postedBy.userName}
+                              @{user.userName}
                                   {/* @trunarla . Mar 14 */}
                               </span>
                           </h3>
@@ -118,6 +135,11 @@ export default function ProfileOption() {
 
              ))} 
 
+</section>
+{
+  changePic &&
+  <ProfilePic changeProfile={changeProfile}/>
+}
     </div>
   )
 }

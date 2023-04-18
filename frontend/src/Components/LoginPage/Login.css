@@ -26,3 +26,13 @@
     font-size: 22px;
     font-weight: 600;
 }
+
+
+@media(max-width:991px){
+    .NavMenu a {
+        font-size: 18px;
+    }
+    .LoginPage img {
+        width: 12%;
+    }
+}
