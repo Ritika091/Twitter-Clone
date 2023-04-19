@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import logo from '../../assets/logo.png'
 import HomeIcon from '@mui/icons-material/Home';
 import SidebarOption from './SidebarOption'
@@ -15,6 +15,25 @@ import LogoutIcon from '@mui/icons-material/Logout';
 import tweet from '../../assets/tweet.png'
 
 export default function Sidebar() {
+
+  const [userphoto,setUserphoto] = useState("")
+
+  useEffect(()=>{
+  fetch(`http://localhost:5000/user/${JSON.parse(localStorage.getItem("user"))._id}`,{
+    headers:{
+      'Content-Type':'application/json',
+      'Authorization':"Bearer "+localStorage.getItem("jwt")
+    }
+  })
+  .then(res=>res.json())
+  .then((result)=>{
+    // setPic(result.post)
+    // console.log(pic)
+    console.log(result)
+    setUserphoto(result.user.Photo)
+  })
+},[])
+
   return (
     <>
     <div className='Sidebar'>
@@ -31,10 +50,10 @@ export default function Sidebar() {
         <button className='tweet'>Tweet</button>  
 
         <div className="ProfLogOut">
-         <Avatar src={ProfileLo}/>
+         <Avatar src={userphoto?userphoto:""}/>
          <div>
-          <h4>Ritika Saxena</h4>
-          <p>@ritikasaxena09</p>
+          <h4>{JSON.parse(localStorage.getItem("user")).name}</h4>
+          <p>@{JSON.parse(localStorage.getItem("user")).userName}</p>
          </div>
          <MoreHorizIcon style={{cursor:"pointer"}}/>
          

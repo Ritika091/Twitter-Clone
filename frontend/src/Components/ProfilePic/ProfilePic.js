@@ -130,6 +130,7 @@ useEffect(()=>{
   <input hidden accept="image/*" onChange={(e)=>setBg(e.target.files[0])} type="file" />
   <AddAPhotoOutlinedIcon className='changeBg' sx={[{ color: 'white' },{ fontSize: 35 }]}/>
 </IconButton>                
+
             </div>
             <div className="ProfPicChange">
             <Avatar className='ProfPic '
@@ -141,7 +142,10 @@ useEffect(()=>{
   <AddAPhotoOutlinedIcon className='changeProfile'  onClick={handleClick} sx={[{ color: 'white' },{ fontSize: 35 }]} />
 {/* </IconButton>   */}
 <input hidden accept="image/*" onChange={(e)=>setImage(e.target.files[0])} ref={hiddenFileInput} type="file" />
+<button className='bgRem'>Remove background</button>
+<button className='picRem'>Remove profile picture</button>
             </div>
+        
         </div>
     </div>
   )

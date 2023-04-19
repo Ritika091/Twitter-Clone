@@ -49,3 +49,45 @@ box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.04);
     left: 3.8rem;
     cursor: pointer;
 }
+.bgRem, .picRem{
+    position: relative;
+    color: white;
+    border-radius: 13rem;
+    background: dodgerblue;
+    border: dodgerblue;
+    width: 9rem;
+    cursor: pointer;
+    height: 2rem;
+}
+.bgRem{
+    top: -8rem;
+    left: 24rem;
+}
+.picRem{
+    top: -5rem;
+    left: 15rem;
+}
+
+@media(max-width:991px){
+.ChangeProfile {
+    width: 20rem;
+}
+.BgChange {
+    width: 19.3rem;
+}
+.changeBg {
+    left: 8rem;
+}
+.changeProfile {
+    bottom: 7.5rem;
+    left: 2.2rem;
+}
+.ChangeProfHeader h3 {
+    font-size: 17px;
+}
+.savebtn {
+    margin-left: 6rem;
+    width: 4rem;
+    height: 2rem;
+}
+}

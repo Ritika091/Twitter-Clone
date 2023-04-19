@@ -13,6 +13,7 @@ import { Link } from 'react-router-dom';
 import Sidebar from '../Sidebar/Sidebar';
 import Tweet from '../Tweet/Tweet';
 import Widget from '../Widgets/Widget';
+import IosShareIcon from '@mui/icons-material/IosShare';
 import logo from '../../assets/logo.png'
 
 
@@ -150,7 +151,8 @@ export default function MyFollowing() {
                             (<FavoriteBorderSharpIcon fontSize='small' className='FooterIcon' onClick={()=>{likePost(posts._id)}}/>)
                         }
                         <p className='like'>{posts.likes.length}</p>
-                        <PublishIcon fontSize='small' className='FooterIcon' />             
+                        {/* <PublishIcon fontSize='small' className='FooterIcon' />              */}
+                        <IosShareIcon fontSize='small' className='FooterIcon' />   
                     </div>
                 </div>
                 {openComment && <Comment postDetails={posts} closeComment={setOpenComment}/> }
@@ -215,7 +217,8 @@ export default function MyFollowing() {
                             (<FavoriteBorderSharpIcon fontSize='small' className='FooterIcon' onClick={()=>{likePost(posts._id)}}/>)
                         }
                         <p className='like'>{posts.likes.length}</p>
-                        <PublishIcon fontSize='small' className='FooterIcon' />             
+                        {/* <PublishIcon fontSize='small' className='FooterIcon' />    */}
+                        <IosShareIcon fontSize='small' className='FooterIcon' />           
                     </div>
                 </div>
                 {openComment && <Comment postDetails={posts} closeComment={setOpenComment}/> }
@@ -233,3 +236,4 @@ export default function MyFollowing() {
     )       
     
 }
+

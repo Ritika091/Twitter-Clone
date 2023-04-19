@@ -37,7 +37,8 @@
 .tweetpic{
     position: relative;
     top: 2.5rem;
-    left: 4rem;
+    /* left: 4rem; */
+    left: -29rem;
 }
 input[type="file"] {
     display: none;
@@ -51,20 +52,35 @@ input[type="file"] {
 .cancelTweet{
     display: none !important;
 }
+#output{
+    width: 30rem;
+}
 
 
 @media(max-width:991px){
+.Tweet{
+    border-bottom: none;
+}
 .Tweet_input textarea {
     padding: 31px 20px;
 }
 .Tweetbtn{
     margin-left: 10rem;
     position: relative;
-    top: -11rem;
+    /* top: -11rem; */
+    top: 1.6rem;
 }
 .cancelTweet{
     display: block !important;
-    position: relative;
-    top: -14rem;
+    position: fixed;
+    top: 2rem;
+    /* top: -27rem; */
+    /* margin-top: -25rem; */
+}
+.tweetpic{
+    left: 1rem;
+}
+#output{
+    width: 20rem;
 }
 }

@@ -14,6 +14,7 @@ import CakeOutlinedIcon from '@mui/icons-material/CakeOutlined';
   import FavoriteIcon from '@mui/icons-material/Favorite';
 import { useParams } from 'react-router-dom';
 import {useNavigate} from 'react-router-dom';
+import IosShareIcon from '@mui/icons-material/IosShare';
 
 
 export default function UserProfileOption() {
@@ -164,7 +165,8 @@ export default function UserProfileOption() {
               <ChatBubbleOutlineOutlinedIcon fontSize='small' className='FooterIcon' />
               <RepeatOutlinedIcon fontSize='small' className='FooterIcon' />
                     <FavoriteIcon fontSize='small' className='FooterIcon'  sx={{ color: '#f91880' }}  />
-              <PublishIcon fontSize='small' className='FooterIcon' />             
+              {/* <PublishIcon fontSize='small' className='FooterIcon' />    */}
+              <IosShareIcon  fontSize='small' className='FooterIcon' /> 
           </div>
       </div>
   </div>

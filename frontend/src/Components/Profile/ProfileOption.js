@@ -15,6 +15,7 @@ import CakeOutlinedIcon from '@mui/icons-material/CakeOutlined';
   import FavoriteIcon from '@mui/icons-material/Favorite';
 import ProfilePic from '../ProfilePic/ProfilePic';
 import {useNavigate} from 'react-router-dom';
+import IosShareIcon from '@mui/icons-material/IosShare';
 
 export default function ProfileOption() {
   const navigate=useNavigate();
@@ -128,7 +129,8 @@ export default function ProfileOption() {
               <RepeatOutlinedIcon fontSize='small' className='FooterIcon' />
                     <FavoriteIcon fontSize='small' className='FooterIcon'  sx={{ color: '#f91880' }}  />
               {/* <p className='like'>{posts.likes.length}</p> */}
-              <PublishIcon fontSize='small' className='FooterIcon' />             
+              {/* <PublishIcon fontSize='small' className='FooterIcon' />              */}
+              <IosShareIcon  fontSize='small' className='FooterIcon' /> 
           </div>
       </div>
   </div>

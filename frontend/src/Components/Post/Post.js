@@ -10,6 +10,8 @@ import RepeatOutlinedIcon from '@mui/icons-material/RepeatOutlined';
 import PublishIcon from '@mui/icons-material/Publish';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import Comment from '../Comment/Comment';
+import IosShareIcon from '@mui/icons-material/IosShare';
+
 // import ViewAllComment from '../Comment/ViewAllComment';
 import { Link } from 'react-router-dom';
 export default function Post() {
@@ -108,7 +110,7 @@ export default function Post() {
                             <div className="PostHeader">
                                 <div className="PostHeaderText">
                                 <h3>
-                                   <Link to={`profile/${posts.postedBy._id}`}>{posts.postedBy.name}{"  "}</Link>
+                                   <Link to={JSON.parse(localStorage.getItem("user"))._id===posts.postedBy._id ? "/profile" : `profile/${posts.postedBy._id}`}>{posts.postedBy.name}{"  "}</Link>
                                   
                                         <span>
                                         <VerifiedIcon fontSize="small" color='primary' />
@@ -135,7 +137,8 @@ export default function Post() {
                             (<FavoriteBorderSharpIcon fontSize='small' className='FooterIcon' onClick={()=>{likePost(posts._id)}}/>)
                         }
                         <p className='like'>{posts.likes.length}</p>
-                        <PublishIcon fontSize='small' className='FooterIcon' />             
+                        {/* <PublishIcon fontSize='small' className='FooterIcon' />    */}
+                        <IosShareIcon fontSize='small' className='FooterIcon' />          
                     </div>
                 </div>
                 {openComment && <Comment postDetails={posts} closeComment={setOpenComment}/> }
