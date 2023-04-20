@@ -142,8 +142,14 @@ useEffect(()=>{
   <AddAPhotoOutlinedIcon className='changeProfile'  onClick={handleClick} sx={[{ color: 'white' },{ fontSize: 35 }]} />
 {/* </IconButton>   */}
 <input hidden accept="image/*" onChange={(e)=>setImage(e.target.files[0])} ref={hiddenFileInput} type="file" />
-<button className='bgRem'>Remove background</button>
-<button className='picRem'>Remove profile picture</button>
+<button className='bgRem' onClick={()=>{
+  setBgurl(null)
+  postBgPic()
+}}  >Remove background</button>
+<button className='picRem' onClick={()=>{
+  setUrl(null)
+  postPic()
+}} >Remove profile picture</button>
             </div>
         
         </div>

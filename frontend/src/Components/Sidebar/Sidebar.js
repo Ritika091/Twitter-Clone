@@ -13,9 +13,10 @@ import { Avatar } from '@mui/material'
 import ProfileLo from '../../assets/profileLogo.jpg'
 import LogoutIcon from '@mui/icons-material/Logout';
 import tweet from '../../assets/tweet.png'
+import { useNavigate } from 'react-router-dom';
 
 export default function Sidebar() {
-
+  const navigate=useNavigate()
   const [userphoto,setUserphoto] = useState("")
 
   useEffect(()=>{
@@ -37,7 +38,7 @@ export default function Sidebar() {
   return (
     <>
     <div className='Sidebar'>
-        <img className='twitlogo' src={logo} alt="" />
+        <img className='twitlogo' src={logo} alt="" onClick={()=>{navigate("/")}} />
         <Link to="/" style={{textDecoration: "none", color:"black"}}>  <SidebarOption active Icon={HomeIcon} text="Home"/></Link> 
         <SidebarOption Icon={TagIcon} text="Explore"/> 
         {/* <SidebarOption Icon={NotificationsNoneIcon} text="Notifications"/>  */}
