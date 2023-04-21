@@ -149,6 +149,7 @@ useEffect(()=>{
 <button className='picRem' onClick={()=>{
   setUrl(null)
   postPic()
+  
 }} >Remove profile picture</button>
             </div>
         
