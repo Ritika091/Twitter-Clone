@@ -1,6 +1,6 @@
 import './App.css';
 // import LoginPage from './Components/LoginPage/Login';
-import {BrowserRouter, Routes, Route} from 'react-router-dom'
+import {Routes, Route, useNavigate} from 'react-router-dom'
 import Home from './Components/Home/Home';
 import SignUp from './Components/LoginPage/SignUp/SignUp';
 import SignIn from './Components/LoginPage/SignIn/SignIn';
@@ -10,12 +10,26 @@ import UserProfile from './Components/UserProfile/UserProfile';
 import MyFollowing from './Components/MyFollowing/MyFollowing';
 import Tweet from './Components/Tweet/Tweet';
 import Message from './Components/Message/Message';
+import { useEffect, useState } from 'react';
 
 function App() {
+  const[token,setToken]=useState("")
+  const navigate=useNavigate();
+  const checkToken=()=>{
+    const token=localStorage.getItem('jwt');
+    if(token){
+      console.log('I have token');
+    }
+    else{
+      console.log("I dont have token");
+      navigate('/signin')
+    }
+  }
+  useEffect(()=>{
+    checkToken();
+  },[token])
   return (
-    <BrowserRouter>
     <div className="App">
-      {/* <LoginPage/> */}
       <Routes>
         <Route path="/" element={<Home/>}></Route>
         <Route path="/signup" element={<SignUp/>}></Route>
@@ -28,7 +42,6 @@ function App() {
         <Route path="/message" element={<Message/>}></Route>
       </Routes>
     </div>
-    </BrowserRouter>
   );
 }
 

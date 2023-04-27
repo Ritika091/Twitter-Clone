@@ -51,6 +51,7 @@
     padding: 10px 20px;
     font-size: 20px;
     overflow: hidden;
+    resize: none;
   }
   .CommentBox ::placeholder{
     font-size: 20px;

@@ -47,8 +47,6 @@ export default function Comment({closeComment,postDetails}) {
   <p>lorem</p>
   </div>
 </div>
-
-    
     </div>
 </div>
 
