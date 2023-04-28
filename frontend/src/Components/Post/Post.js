@@ -126,8 +126,8 @@ export default function Post() {
                         <img src={posts.photo} alt="" />
             
                     <div className="PostFooter">
-                        <ChatBubbleOutlineOutlinedIcon fontSize='small' className='FooterIcon' onClick={()=>{setOpenComment(true)}} />
-                        <p className='commentP' onClick={()=>{toggleComment()}}>View all comments</p>
+                        <ChatBubbleOutlineOutlinedIcon fontSize='small' className='FooterIcon'  />
+                        <p className='commentP'  onClick={()=>{setOpenComment(true)}}>View all comments</p>
                         <RepeatOutlinedIcon fontSize='small' className='FooterIcon' />
                         {
                             posts.likes.includes(JSON.parse(localStorage.getItem("user"))._id)
@@ -141,8 +141,8 @@ export default function Post() {
                         <IosShareIcon fontSize='small' className='FooterIcon' />          
                     </div>
                 </div>
-                {openComment && <Comment postDetails={posts} closeComment={setOpenComment}/> }
-                {openViewAllComment && <Comment postDetails={posts} closeViewAllComment={setOpenViewAllComment}/> }
+                {openComment && <Comment postDetails={posts} closeComment={setOpenComment}  /> }
+                {/* {openViewAllComment && <Comment postDetails={posts} closeViewAllComment={setOpenViewAllComment}/> } */}
             </div>
                     ))
                 }   

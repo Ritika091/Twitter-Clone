@@ -8,7 +8,7 @@ const POST=mongoose.model("POST")
 router.get("/allposts", requirelogin, (req,res)=>{
     POST.find().sort({"_id":-1})
     .populate("postedBy", "_id name userName Photo")
-    .populate("comments.postedBy","_id name")
+    .populate("comments.postedBy","_id name userName Photo")
     .then(posts=>res.json(posts))
     .catch(err=>console.log(err))
 })
@@ -65,20 +65,26 @@ router.put("/unlike", requirelogin, (req,res)=>{
 })
 
 router.put("/comment",requirelogin,(req,res)=>{
+    
     const comment={
         comment:req.body.text,
-        postedBy:req.user._id
+        postedBy:req.user._id,
     }
     POST.findByIdAndUpdate(req.body.postId,{
         $push:{comments:comment}
     },{
         new:true
     })
-    .populate("comments.postedBy","_id name")
-    .populate("postedBy","_id name Photo")
+    
+    .populate("comments.postedBy","_id name userName Photo")
+    .populate("postedBy","_id name userName Photo")
     .then(result=>res.json(result))
     .catch(err=> res.status(422).json({error:err}))
 })
+
+
+
+
 
 // to show following posts
 router.get("/myfollowingpost",requirelogin,(req,res)=>{
