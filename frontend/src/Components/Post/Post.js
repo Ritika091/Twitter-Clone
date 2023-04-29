@@ -17,7 +17,7 @@ import { Link } from 'react-router-dom';
 export default function Post() {
     var picLink="https://twirpz.files.wordpress.com/2015/06/twitter-avi-gender-balanced-figure.png"
     const[openComment, setOpenComment]=useState(false);
-    const[openViewAllComment,setOpenViewAllComment] = useState(false);
+    const[items,setItems] = useState([]);
     const [data, setData] = useState([]);
     useEffect(() => {
         // fetching all the posts
@@ -35,12 +35,13 @@ export default function Post() {
 
 
      // show and hide comments
-     const toggleComment=()=>{
-        if(openViewAllComment){
-            setOpenViewAllComment(false);
+     const toggleComment=(para)=>{
+        if(openComment){
+            setOpenComment(false);
         }
         else{
-            setOpenViewAllComment(true);
+            setOpenComment(true);
+            setItems(para)
         }
     }
 
@@ -99,7 +100,7 @@ export default function Post() {
                 return (
                     <>
                     <section className='ProfPost1'>
-                    
+
                 {
                     data.map(posts=>(
                         <div className='Post'>
@@ -127,7 +128,7 @@ export default function Post() {
             
                     <div className="PostFooter">
                         <ChatBubbleOutlineOutlinedIcon fontSize='small' className='FooterIcon'  />
-                        <p className='commentP'  onClick={()=>{setOpenComment(true)}}>View all comments</p>
+                        <p className='commentP'  onClick={()=>{toggleComment(posts)}}>View all comments</p>
                         <RepeatOutlinedIcon fontSize='small' className='FooterIcon' />
                         {
                             posts.likes.includes(JSON.parse(localStorage.getItem("user"))._id)
@@ -141,7 +142,7 @@ export default function Post() {
                         <IosShareIcon fontSize='small' className='FooterIcon' />          
                     </div>
                 </div>
-                {openComment && <Comment postDetails={posts} closeComment={setOpenComment}  /> }
+                {openComment && <Comment postDetails={posts} toggler={toggleComment} items={items} /> }
                 {/* {openViewAllComment && <Comment postDetails={posts} closeViewAllComment={setOpenViewAllComment}/> } */}
             </div>
                     ))

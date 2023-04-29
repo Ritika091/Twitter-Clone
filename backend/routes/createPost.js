@@ -75,7 +75,7 @@ router.put("/comment",requirelogin,(req,res)=>{
     },{
         new:true
     })
-    
+    .sort({comments:-1})
     .populate("comments.postedBy","_id name userName Photo")
     .populate("postedBy","_id name userName Photo")
     .then(result=>res.json(result))

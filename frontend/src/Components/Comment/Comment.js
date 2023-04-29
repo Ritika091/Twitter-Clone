@@ -5,8 +5,7 @@ import { Avatar} from '@mui/material'
 import ProfileLogo from '../../assets/profileLogo.jpg'
 import { useNavigate } from 'react-router-dom';
 
-export default function Comment({closeComment,postDetails}) {
-  const navigate=useNavigate()
+export default function Comment({toggler,postDetails,items}) {
   const[comment,setComment]=useState()
   const [data, setData] = useState([]);
   const [userphoto,setUserphoto] = useState("")
@@ -24,18 +23,16 @@ export default function Comment({closeComment,postDetails}) {
         }).then(res=>res.json())
         .then((result)=>{
           setComment("")
-            console.log(result)
-            navigate('/')
-            
+            // console.log("The result",result)
             updatePage(result);
+
             
         })
         .catch(err=>console.log(err))
   }
 
   const updatePage=(result)=>{
-    setData(updatedData);
-    const updatedData=postDetails.map((posts)=>{
+    const updatedData=data.map((posts)=>{
       if(posts._id===result.id){
         console.log(result)
         return result
@@ -60,22 +57,24 @@ export default function Comment({closeComment,postDetails}) {
     .then((result)=>{
       // setPic(result.post)
       // console.log(pic)
-      console.log(result)
+      // console.log(result)
       setUserphoto(result.user.Photo)
     })
-  },[])
+  })
 
   
   return (
     <div className="darkBg1">
     <div className="centered1">
     <div className='CommentModal'>
-       <CloseIcon className='closebtn' onClick={()=>closeComment(false)} />
+       <CloseIcon className='closebtn' onClick={()=>toggler(postDetails)} />
        <div className="CommentBox">
        <Avatar src={userphoto?userphoto:""} className="Avatar"/>
        <textarea value={comment} onChange={(e)=>{setComment(e.target.value)}} type="text" placeholder="Tweet your reply" />
        </div>
-       <button className='Replybtn' onClick={()=>{makeComment(comment,postDetails._id)}} >Reply</button>
+       <button className='Replybtn' onClick={()=>{makeComment(comment,postDetails._id);
+      toggler(postDetails)
+      }} >Reply</button>
    
 
 {/* show comment */}
@@ -83,7 +82,7 @@ export default function Comment({closeComment,postDetails}) {
   <div className='ShowComment'>
 <div className="comm">
      {
-    postDetails?.comments?.map((com)=>{ 
+    items?.comments?.map((com)=>{ 
      return(
       <div className='allcomments'>
      <Avatar src={com?.postedBy?.Photo} className="Avatar"/>
