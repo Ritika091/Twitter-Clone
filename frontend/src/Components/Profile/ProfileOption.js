@@ -15,7 +15,7 @@ import CakeOutlinedIcon from '@mui/icons-material/CakeOutlined';
   import FavoriteIcon from '@mui/icons-material/Favorite';
 import ProfilePic from '../ProfilePic/ProfilePic';
 import {useNavigate} from 'react-router-dom';
-import IosShareIcon from '@mui/icons-material/IosShare';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 export default function ProfileOption() {
   const navigate=useNavigate();
@@ -24,6 +24,22 @@ export default function ProfileOption() {
   const[user,setUser]=useState("");
   const[changePic,setChangePic]=useState(false)
   // const[pic,setPic]=useState("")
+
+  const DeletePost=(posts)=>{
+    if(window.confirm('Do you really want to delete this post?')){
+    fetch(`http://localhost:5000/delposts/${posts}`,{
+      method:'DELETE',
+      headers:{
+        'Content-Type':'application/json',
+        'Authorization':'Bearer '+localStorage.getItem('jwt')
+      }
+    })
+    .then(res=>res.json())
+    .then(data=>console.log(data))
+    .catch(err=>console.log(err))
+  }
+  }
+
 
   const changeProfile= ()=>{
     if(changePic){
@@ -130,7 +146,10 @@ export default function ProfileOption() {
                     <FavoriteIcon fontSize='small' className='FooterIcon'  sx={{ color: '#f91880' }}  />
               {/* <p className='like'>{posts.likes.length}</p> */}
               {/* <PublishIcon fontSize='small' className='FooterIcon' />              */}
-              <IosShareIcon  fontSize='small' className='FooterIcon' /> 
+              <DeleteIcon fontSize='small' className='FooterIcon' onClick={()=>{
+            DeletePost(data._id);
+            navigate('/');
+          }}/>          
           </div>
       </div>
   </div>

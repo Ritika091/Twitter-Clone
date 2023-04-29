@@ -12,6 +12,7 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import Comment from '../Comment/Comment';
 import IosShareIcon from '@mui/icons-material/IosShare';
 
+
 // import ViewAllComment from '../Comment/ViewAllComment';
 import { Link } from 'react-router-dom';
 export default function Post() {
@@ -19,20 +20,8 @@ export default function Post() {
     const[openComment, setOpenComment]=useState(false);
     const[items,setItems] = useState([]);
     const [data, setData] = useState([]);
-    useEffect(() => {
-        // fetching all the posts
-        fetch("http://localhost:5000/allposts", {
-            headers: {
-                'Content-Type':'application/json',
-                "Authorization": "Bearer " + localStorage.getItem("jwt")
-            },
-        }).then(res => res.json())
-            .then(result =>{ setData(result);
-                console.log(result);
-            })
-            .catch(err => console.log(err))
-    }, [])
 
+  
 
      // show and hide comments
      const toggleComment=(para)=>{
@@ -42,6 +31,7 @@ export default function Post() {
         else{
             setOpenComment(true);
             setItems(para)
+            console.log('Para',items)
         }
     }
 
@@ -58,15 +48,7 @@ export default function Post() {
               })
         }).then(res=>res.json())
         .then((result)=>{
-            const newData=data.map((posts)=>{
-                if(posts._id==result._id){
-                    return result
-                }
-                else{
-                    return posts
-                }
-            })
-            setData(newData)
+           updatePage(result)
             console.log(result)
         })
     }
@@ -85,18 +67,37 @@ export default function Post() {
               })
         }).then(res=>res.json())
         .then((result)=>{
-            const newData=data.map((posts)=>{
-                if(posts._id==result._id){
-                    return result
-                }
-                else{
-                    return posts
-                }
-            })
-            setData(newData)
-            console.log(result)
+           updatePage(result)
         })
     }
+    const updatePage=(result)=>{
+        const updatedData=data.map((posts)=>{
+          if(posts._id===result.id){
+            console.log(result)
+            return result
+          }
+          else{
+            console.log(posts)
+            return posts;
+          }
+        })
+        setData(updatedData);
+      }
+    useEffect(() => {
+        // fetching all the posts
+        fetch("http://localhost:5000/allposts", {
+            headers: {
+                'Content-Type':'application/json',
+                "Authorization": "Bearer " + localStorage.getItem("jwt")
+            },
+        }).then(res => res.json())
+            .then(result =>{ 
+                setData(result);
+                console.log(result);
+            })
+            .catch(err => console.log(err))
+    },[])
+
                 return (
                     <>
                     <section className='ProfPost1'>
@@ -128,7 +129,9 @@ export default function Post() {
             
                     <div className="PostFooter">
                         <ChatBubbleOutlineOutlinedIcon fontSize='small' className='FooterIcon'  />
-                        <p className='commentP'  onClick={()=>{toggleComment(posts)}}>View all comments</p>
+                        <p className='commentP'  onClick={()=>{toggleComment(posts)
+                        console.log('Tested',posts)
+                        }}>View all comments</p>
                         <RepeatOutlinedIcon fontSize='small' className='FooterIcon' />
                         {
                             posts.likes.includes(JSON.parse(localStorage.getItem("user"))._id)
@@ -142,7 +145,7 @@ export default function Post() {
                         <IosShareIcon fontSize='small' className='FooterIcon' />          
                     </div>
                 </div>
-                {openComment && <Comment postDetails={posts} toggler={toggleComment} items={items} /> }
+                {openComment && <Comment toggler={toggleComment} items={items}/> }
                 {/* {openViewAllComment && <Comment postDetails={posts} closeViewAllComment={setOpenViewAllComment}/> } */}
             </div>
                     ))

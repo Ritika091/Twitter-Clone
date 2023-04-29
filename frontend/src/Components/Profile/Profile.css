@@ -111,7 +111,7 @@ margin-left: 1rem;
 }
 
 .ProfNav ul li:hover{
-    background-color: rgb(210, 212, 214);
+    /* background-color: rgb(210, 212, 214); */
     cursor: pointer;
 }
 .RespProfile{

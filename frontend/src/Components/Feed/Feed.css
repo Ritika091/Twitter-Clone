@@ -8,6 +8,7 @@
     position: fixed;
     background-color: #fff;
     margin-top: -1rem;
+    z-index: 999;
 }
 
 .Feed_header h2{

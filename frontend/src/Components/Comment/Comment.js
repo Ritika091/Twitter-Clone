@@ -5,9 +5,10 @@ import { Avatar} from '@mui/material'
 import ProfileLogo from '../../assets/profileLogo.jpg'
 import { useNavigate } from 'react-router-dom';
 
-export default function Comment({toggler,postDetails,items}) {
+export default function Comment({toggler,items}) {
   const[comment,setComment]=useState()
   const [data, setData] = useState([]);
+  const navigator=useNavigate();
   const [userphoto,setUserphoto] = useState("")
   const makeComment=(text,id)=>{
     fetch("http://localhost:5000/comment", {
@@ -25,6 +26,8 @@ export default function Comment({toggler,postDetails,items}) {
           setComment("")
             // console.log("The result",result)
             updatePage(result);
+         
+        
 
             
         })
@@ -32,14 +35,14 @@ export default function Comment({toggler,postDetails,items}) {
   }
 
   const updatePage=(result)=>{
-    const updatedData=data.map((posts)=>{
+    const updatedData=items?.comments?.map((posts)=>{
       if(posts._id===result.id){
         console.log(result)
         return result
       }
       else{
         console.log(posts)
-        return posts._id;
+        return posts;
       }
     })
     setData(updatedData);
@@ -58,22 +61,25 @@ export default function Comment({toggler,postDetails,items}) {
       // setPic(result.post)
       // console.log(pic)
       // console.log(result)
+      // setUserphoto(result.user.Photo)
+      console.log('Photo tester:',result.user.Photo)
       setUserphoto(result.user.Photo)
     })
-  })
+console.log('My data: ',items)
+  },[])
 
   
   return (
     <div className="darkBg1">
     <div className="centered1">
     <div className='CommentModal'>
-       <CloseIcon className='closebtn' onClick={()=>toggler(postDetails)} />
+       <CloseIcon className='closebtn' onClick={()=>toggler()} />
        <div className="CommentBox">
        <Avatar src={userphoto?userphoto:""} className="Avatar"/>
        <textarea value={comment} onChange={(e)=>{setComment(e.target.value)}} type="text" placeholder="Tweet your reply" />
        </div>
-       <button className='Replybtn' onClick={()=>{makeComment(comment,postDetails._id);
-      toggler(postDetails)
+       <button className='Replybtn' onClick={()=>{makeComment(comment,items._id);
+      toggler(items)
       }} >Reply</button>
    
 

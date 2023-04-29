@@ -96,4 +96,21 @@ router.get("/myfollowingpost",requirelogin,(req,res)=>{
     })
     .catch(err=>{console.log(err)})
 })
+
+
+router.delete('/delposts/:postId',requirelogin,(req,res)=>{
+    POST.findOne({_id:req.params.postId})
+    .populate('postedBy','_id')
+  .then(data=>{
+    if(!data){
+        return res.status(422).json({error:data});
+    }
+    if(req.user._id.toString()==data.postedBy._id.toString()){
+      data.deleteOne({_id:req.params.postId})
+        return res.json({message:'Post Deleted successfully'})
+        
+    }
+  }).catch(err=>res.status(422).json({error:err}))
+    
+})
 module.exports=router
