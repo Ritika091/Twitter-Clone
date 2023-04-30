@@ -121,16 +121,20 @@ margin-left: 1rem;
     .Profile{
         display: none;
     }
-    .RespProfile{
+    .RespProfile {
         display: block;
+        border: 2px solid black;
+        width: fit-content;
     }
     .ProfileOption {
         margin-left: 0rem;
-        width: 21rem;
+        width: 28rem;
         border: none;
+        overflow-x: hidden;
     }
     .banner {
-        width: 21rem;
+        /* width: 21rem; */
+        width: 100vw;
     }
 .ProfPic {
     width: 90px !important;
@@ -147,5 +151,9 @@ margin-left: 1rem;
 .ProfPost{
     margin-top: -6rem;
     margin-bottom: 12rem;
+}
+.Followbtn{
+    right: 9rem;
+    position: fixed;
 }
 }

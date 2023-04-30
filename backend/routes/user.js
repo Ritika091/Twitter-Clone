@@ -78,4 +78,12 @@ router.put("/uploadBgProfilePic", requirelogin,(req,res)=>{
     }).then(result=>res.json(result))
     .catch(err=>{return res.status(422).json({error:err})})
 })
+
+// to set bio
+router.post("/bio",requirelogin,(req,res)=>{
+    const bio = req.body.bio;
+  // Store the bio information in your database or other storage mechanism
+  res.send(bio);
+});
+
 module.exports=router;

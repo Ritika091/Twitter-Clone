@@ -6,6 +6,7 @@ import AddAPhotoOutlinedIcon from '@mui/icons-material/AddAPhotoOutlined';
 import { IconButton } from '@mui/material';
 export default function ProfilePic({changeProfile}) {
     const[image,setImage]=useState("");
+    const [body,setBody]=useState("")
     const[url,setUrl]=useState("");
     const[bg,setBg]=useState("")
     const[bgurl,setBgurl]=useState("");
@@ -94,6 +95,24 @@ const postBgPic=()=>{
 }
 
 useEffect(()=>{
+  fetch("http://localhost:5000/bio",{
+    method:"POST",
+    headers:{
+      "Content-type":"application/json",
+      "Authorization":"Bearer "+ localStorage.getItem("jwt")
+    },
+    body:JSON.stringify({
+      body:body
+    })
+  })
+  .then(res=>res)
+  .then(data=>{
+      console.log(data);
+  })
+  .catch(err=>console.log(err))
+})
+
+useEffect(()=>{
     if(image){
 postDetails(image)
     }
@@ -117,13 +136,14 @@ useEffect(()=>{
   }
 },[bgurl])
 
+
   return (
     <div className='ProfilePic darkBg '>
         <div className="ChangeProfile centered">
             <div className="ChangeProfHeader">
                 <CloseIcon onClick={changeProfile} sx={{cursor:"pointer"}}/>
                 <h3>Edit Profile</h3>
-                <button className='savebtn'>Save</button>
+                <button className='savebtn' >Save</button>
             </div>
             <div className="BgChange">
             <IconButton   aria-label="upload picture" component="label">
@@ -137,10 +157,7 @@ useEffect(()=>{
              src="https://twirpz.files.wordpress.com/2015/06/twitter-avi-gender-balanced-figure.png"
             sx={{ width: 130, height: 130 }}
             />
-               {/* <IconButton   aria-label="upload picture" component="label"  onChange={(e)=>{setImage(e.target.files[0])}}> */}
-  {/* <input hidden accept="image/*" type="file" /> */}
   <AddAPhotoOutlinedIcon className='changeProfile'  onClick={handleClick} sx={[{ color: 'white' },{ fontSize: 35 }]} />
-{/* </IconButton>   */}
 <input hidden accept="image/*" onChange={(e)=>setImage(e.target.files[0])} ref={hiddenFileInput} type="file" />
 <button className='bgRem' onClick={()=>{
   setBgurl(null)
@@ -152,7 +169,9 @@ useEffect(()=>{
   
 }} >Remove profile picture</button>
             </div>
-        
+        <div className="editfields">
+          <input   type="text" placeholder='Bio' />
+        </div>
         </div>
     </div>
   )

@@ -23,6 +23,9 @@ const userSchema= new mongoose.Schema({
     Photo:{
         type:String,
     },
+    bio:{
+        type:String,
+    },
     followers:[{type:ObjectId,ref:"USER"}],
     following:[{type:ObjectId,ref:"USER"}]
 })

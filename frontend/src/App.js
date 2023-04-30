@@ -16,13 +16,15 @@ function App() {
   const[token,setToken]=useState("")
   const navigate=useNavigate();
   const checkToken=()=>{
-    const token=localStorage.getItem('jwt');
-    if(token){
-      console.log('I have token');
-    }
-    else{
+    const tokenVal=localStorage.getItem('jwt');
+    if(!tokenVal){
       console.log("I dont have token");
       navigate('/signin')
+    }
+    else{
+      console.log('I have token');
+      setToken(tokenVal)
+      // navigate('/')
     }
   }
   useEffect(()=>{

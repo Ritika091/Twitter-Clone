@@ -127,11 +127,11 @@ margin-left: 1rem;
     }
     .ProfileOption {
         margin-left: 0rem;
-        width: 21rem;
+        width: 28rem;
         border: none;
     }
     .banner {
-        width: 21rem;
+        /* width: 21rem; */
     }
     .ProfPic {
         width: 90px !important;
@@ -150,6 +150,7 @@ margin-left: 1rem;
     margin-bottom: 12rem;
 }
 .Editbtn{
-    right: 1rem;
+    right: 17rem;
+    position: fixed;
 }
 }

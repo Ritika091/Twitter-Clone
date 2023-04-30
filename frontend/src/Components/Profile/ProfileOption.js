@@ -91,14 +91,15 @@ export default function ProfileOption() {
             <h2>{user.name}</h2>
             <p>@{user.userName}</p>
            <br />
-           <p>Life does not get better by chance. It gets better by change🙂</p>
+           {/* <p>Life does not get better by chance. It gets better by change🙂</p> */}
+           <p>{user.Bio}</p>
             <br />
-            <div className="Prof">
+            {/* <div className="Prof">
                 <CakeOutlinedIcon/>
                 <p>Born November 9, 2002</p>
                 <CalendarMonthOutlinedIcon/>
                 <p>Joined May 2020</p>
-            </div>
+            </div> */}
 
             <div className="Following">
             <p><span>{user.following?user.following.length:"0"} </span> Following</p>
