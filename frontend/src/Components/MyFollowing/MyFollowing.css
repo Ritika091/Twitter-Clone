@@ -98,4 +98,8 @@
     .like{
         margin-left: -5.5rem;
     }
+    .PostBody img {
+        width: 86%;
+        border-radius: 8px;
+}
 }

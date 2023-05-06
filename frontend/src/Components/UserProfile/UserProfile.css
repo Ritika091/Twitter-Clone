@@ -32,7 +32,6 @@
 
 .banner{
     width: 36rem;
-    margin-top: -1rem;
 }
 .ProfPic{
     position: relative;
@@ -128,13 +127,12 @@ margin-left: 1rem;
     }
     .ProfileOption {
         margin-left: 0rem;
-        width: 28rem;
+        width: 100%;
         border: none;
         overflow-x: hidden;
     }
     .banner {
-        /* width: 21rem; */
-        width: 100vw;
+        width: 100%;
     }
 .ProfPic {
     width: 90px !important;
@@ -143,10 +141,14 @@ margin-left: 1rem;
     left: 0.5rem;
 }
 .ProfileContent{
-        width: 19rem;
+        width: fit-content;
+}
+.ProfileContent p{
+    word-break: break-word;
+    padding-right: 3rem;
 }
 .ProfNav ul{
-    width: 20rem;
+    width: auto;
 }
 .ProfPost{
     margin-top: -6rem;

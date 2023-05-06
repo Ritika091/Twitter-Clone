@@ -8,6 +8,10 @@ background: rgba(255,255,255,1.00);
 z-index: 10;
 border-radius: 16px;
 box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.04);
+top: 50%;
+position: fixed;
+left: 50%;
+transform: translate(-50%,-50%);
 }
 .ChangeProfHeader{
     display: flex;
@@ -50,9 +54,10 @@ box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.04);
     cursor: pointer;
 }
 .bgRem, .picRem{
-    position: relative;
+    /* position: relative; */
     color: white;
     border-radius: 13rem;
+    margin-top: 1rem;
     background: dodgerblue;
     border: dodgerblue;
     width: 9rem;
@@ -68,7 +73,7 @@ box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.04);
     left: 15rem;
 }
 .editfields{
-    margin-top: -2rem;
+    margin-top: 4rem;
     margin-left: 1rem;
 }
 .editfields input{
@@ -79,27 +84,43 @@ box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.04);
     padding: 0px 15px;
     font-size: 18px;
 }
-
+.removebtn{
+    margin-top: -10rem;
+    margin-left: 24rem;
+}
 @media(max-width:991px){
 .ChangeProfile {
-    width: 20rem;
+    width: 19.5rem;
 }
 .BgChange {
-    width: 19.3rem;
+    width: 100%;
+    margin-left: 0;
 }
 .changeBg {
     left: 8rem;
 }
-.changeProfile {
-    bottom: 7.5rem;
-    left: 2.2rem;
+.changeProfile{
+    bottom: 8.5rem;
+    left: 2rem;
 }
 .ChangeProfHeader h3 {
     font-size: 17px;
+    margin-left: 0;
 }
 .savebtn {
     margin-left: 6rem;
     width: 4rem;
     height: 2rem;
+}
+.editfields input {
+    width: 16rem;
+    border: 1px solid black;
+}
+.bgRem, .picRem{
+    margin-top: 0.5rem;
+}
+.removebtn {
+    margin-top: -8rem;
+    margin-left: 10rem;
 }
 }

@@ -141,7 +141,7 @@ useEffect(()=>{
 
   return (
     <div className='ProfilePic darkBg '>
-        <div className="ChangeProfile centered">
+        <div className="ChangeProfile ">
             <div className="ChangeProfHeader">
                 <CloseIcon onClick={changeProfile} sx={{cursor:"pointer"}}/>
                 <h3>Edit Profile</h3>
@@ -162,7 +162,7 @@ useEffect(()=>{
             />
   <AddAPhotoOutlinedIcon className='changeProfile'  onClick={handleClick} sx={[{ color: 'white' },{ fontSize: 35 }]} />
 <input hidden accept="image/*" onChange={(e)=>setImage(e.target.files[0])} ref={hiddenFileInput} type="file" />
-<button className='bgRem' onClick={()=>{
+<div className="removebtn"><button className='bgRem' onClick={()=>{
   setBgurl(null)
   postBgPic()
 }}  >Remove background</button>
@@ -170,8 +170,9 @@ useEffect(()=>{
   setUrl(null)
   postPic()
   
-}} >Remove profile picture</button>
+}} >Remove profile picture</button></div>
             </div>
+           
         <div className="editfields">
           <input   type="text" placeholder='Bio' onChange={(e)=>setBody(e.target.value)} />
         </div>

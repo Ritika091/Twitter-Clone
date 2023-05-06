@@ -34,7 +34,6 @@
 
 .banner{
     width: 36rem;
-    margin-top: -1rem;
     height: 12rem;
 }
 .ProfPic{
@@ -47,15 +46,17 @@
     height: 2.2rem;
     background: transparent;
     border-radius: 5rem;
-    position: absolute;
-    right: 34rem;
-    top: 16rem;
+    margin-left: auto;
+    margin-right: 1.5rem;
     border: 1px solid #c3c8cb;
     font-family: "TwitterChirp",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
     font-size: 15px;
     line-height: 20px;
     font-weight: 700;
     cursor: pointer;
+}
+.UserImg{
+    display: flex;
 }
 .ProfileContent{
 margin-top: -4rem;
@@ -129,12 +130,12 @@ margin-left: 1rem;
     }
     .ProfileOption {
         margin-left: 0rem;
-        width: 28rem;
+        width: 100%;
         border: none;
     }
-    /* .banner {
-        width: 21rem;
-    } */
+    .banner {
+        width: 100%;
+    }
     .ProfPic {
         width: 90px !important;
         height: 90px !important;
@@ -142,17 +143,24 @@ margin-left: 1rem;
         left: 0.5rem;
     }
     .ProfileContent{
-        width: 19rem;
+        width: fit-content;
 }
 .ProfNav ul{
-    width: 20rem;
+    width: auto;
 }
 .ProfPost{
     margin-top: -6rem;
     margin-bottom: 12rem;
 }
 .Editbtn{
-    right: 17rem;
-    position: fixed;
+    margin-left: auto;
+    margin-right: 1rem;
+}
+.UserImg{
+    display: flex;
+}
+.ProfileContent p{
+    word-break: break-word;
+    padding-right: 3rem;
 }
 }

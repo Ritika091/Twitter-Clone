@@ -27,11 +27,13 @@ export default function Post() {
      const toggleComment=(para)=>{
         if(openComment){
             setOpenComment(false);
+            console.log("open")
         }
         else{
             setOpenComment(true);
             setItems(para)
             console.log('Para',items)
+            console.log("close")
         }
     }
 
@@ -115,8 +117,8 @@ export default function Post() {
                                    <Link to={JSON.parse(localStorage.getItem("user"))._id===posts.postedBy._id ? "/profile" : `profile/${posts.postedBy._id}`}>{posts.postedBy.name}{"  "}</Link>
                                   
                                         <span>
-                                        <VerifiedIcon fontSize="small" color='primary' />
-                                        {posts.postedBy.userName}
+                                        <VerifiedIcon fontSize="small" color='primary' className='verifiedName' />
+                                        @{posts.postedBy.userName}
                                             {/* @trunarla . Mar 14 */}
                                         </span>
                                     </h3>

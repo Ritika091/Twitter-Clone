@@ -127,8 +127,8 @@ export default function MyFollowing() {
                                    <Link to={`profile/${posts.postedBy._id}`}>{posts.postedBy.name}{"  "}</Link>
                                   
                                         <span>
-                                        <VerifiedIcon fontSize="small" color='primary' />
-                                        {posts.postedBy.userName}
+                                        <VerifiedIcon fontSize="small" color='primary' className='verifiedName'/>
+                                        @{posts.postedBy.userName}
                                             {/* @trunarla . Mar 14 */}
                                         </span>
                                     </h3>

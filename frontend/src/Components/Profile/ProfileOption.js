@@ -79,12 +79,15 @@ export default function ProfileOption() {
         </div>
         <div className="ProfileImg">
             <img src={user.BgPhoto ? user.BgPhoto : ""} alt="" style={{backgroundColor:"rgba(0, 0, 0, 0.3)"}}  className='banner'/>
-            <button className='Editbtn' onClick={changeProfile}>Edit profile</button>
+            </div>
+
+            <div className="UserImg">
             <Avatar className='ProfPic'
              alt="Remy Sharp" 
             src={user.Photo ? user.Photo : picLink}
             sx={{ width: 130, height: 130 }}
             />
+            <button className='Editbtn' onClick={changeProfile}>Edit profile</button>
             </div>
 
             <div className="ProfileContent">

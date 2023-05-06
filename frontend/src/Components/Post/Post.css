@@ -50,6 +50,7 @@
 .like{
     margin-left: -5rem;
     color: #f91880;
+    font-family: "TwitterChirp",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
     
 }
 .commentP{
@@ -58,11 +59,13 @@
     margin-top: 4px;
     cursor: pointer;
     font-weight: 900;
+    font-family: "TwitterChirp",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
 }
 .PostHeaderText h3 a{
     text-decoration: none;
     color: black;
 }
+
 
 @media(max-width:991px){
     .Post {
@@ -87,4 +90,8 @@
         margin-top: 1rem;
         margin-bottom: 12rem;
     }
+    .PostBody img {
+        width: 86%;
+        border-radius: 8px;
+}
 }
