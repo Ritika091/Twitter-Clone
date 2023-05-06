@@ -94,23 +94,25 @@ const postBgPic=()=>{
   .catch(err=>console.log(err))
 }
 
-useEffect(()=>{
+const updateBio=()=>{
   fetch("http://localhost:5000/bio",{
-    method:"POST",
+    method:"PUT",
     headers:{
       "Content-type":"application/json",
       "Authorization":"Bearer "+ localStorage.getItem("jwt")
     },
     body:JSON.stringify({
-      body:body
+      bio:body
     })
   })
-  .then(res=>res)
+  .then(res=>res.json())
   .then(data=>{
       console.log(data);
   })
   .catch(err=>console.log(err))
-})
+}
+  
+
 
 useEffect(()=>{
     if(image){
@@ -143,7 +145,8 @@ useEffect(()=>{
             <div className="ChangeProfHeader">
                 <CloseIcon onClick={changeProfile} sx={{cursor:"pointer"}}/>
                 <h3>Edit Profile</h3>
-                <button className='savebtn' >Save</button>
+                <button className='savebtn' onClick={()=>{updateBio()
+                window.location.reload()}}>Save</button>
             </div>
             <div className="BgChange">
             <IconButton   aria-label="upload picture" component="label">
@@ -170,7 +173,7 @@ useEffect(()=>{
 }} >Remove profile picture</button>
             </div>
         <div className="editfields">
-          <input   type="text" placeholder='Bio' />
+          <input   type="text" placeholder='Bio' onChange={(e)=>setBody(e.target.value)} />
         </div>
         </div>
     </div>

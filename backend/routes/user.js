@@ -4,8 +4,9 @@ const mongoose=require('mongoose');
 const requirelogin = require('../middlewares/requirelogin');
 const POST=mongoose.model("POST")
 const USER= mongoose.model('USER')
+const cors=require('cors')
 
-
+router.use(cors())
 // to get user profile
 router.get("/user/:id",(req,res)=>{
     USER.findOne({_id:req.params.id})
@@ -80,10 +81,14 @@ router.put("/uploadBgProfilePic", requirelogin,(req,res)=>{
 })
 
 // to set bio
-router.post("/bio",requirelogin,(req,res)=>{
-    const bio = req.body.bio;
-  // Store the bio information in your database or other storage mechanism
-  res.send(bio);
+router.put("/bio",requirelogin,(req,res)=>{
+    const {bio} = req.body;
+    USER.findByIdAndUpdate(req.user._id,{
+        $set:{bio:bio}
+    },{
+        new:true
+    }).then(result=>res.json(result))
+    .catch(err=>{return res.status(422).json({error:err})})
 });
 
 module.exports=router;
