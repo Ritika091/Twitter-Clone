@@ -28,8 +28,6 @@ export default function Sidebar() {
   })
   .then(res=>res.json())
   .then((result)=>{
-    // setPic(result.post)
-    // console.log(pic)
     console.log(result)
     setUserphoto(result.user.Photo)
   })
@@ -41,11 +39,9 @@ export default function Sidebar() {
         <img className='twitlogo' src={logo} alt="" onClick={()=>{navigate("/")}} />
         <Link to="/" style={{textDecoration: "none", color:"black"}}>  <SidebarOption active Icon={HomeIcon} text="Home"/></Link> 
         <SidebarOption Icon={TagIcon} text="Explore"/> 
-        {/* <SidebarOption Icon={NotificationsNoneIcon} text="Notifications"/>  */}
         <SidebarOption Icon={MailOutlineIcon} text="Messages"/> 
         <SidebarOption Icon={BookmarkBorderIcon} text="Bookmarks"/> 
        <Link to="/profile" style={{textDecoration: "none", color:"black"}}> <SidebarOption Icon={PersonOutlineOutlinedIcon} text="Profile"/></Link> 
-        {/* <SidebarOption Icon={MoreHorizIcon } text="More"/>   */}
         <Link to="/logout" style={{textDecoration: "none", color:"black"}}><SidebarOption Icon={LogoutIcon } text="Logout"/></Link> 
 
         <button className='tweet'>Tweet</button>  

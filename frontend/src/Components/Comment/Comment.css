@@ -1,5 +1,4 @@
 .darkBg1{
-    /* background-color: rgba(128, 128, 128, 0.477); */
     backdrop-filter: brightness(93%);
     width: 100vw;
     height: 100vh;
@@ -22,13 +21,11 @@
 
 .CommentModal,.ShowComment {
     width: 38rem;
-    /* height: 20rem; */
     background: rgba(255,255,255,1.00);
     z-index: 10;
     border-radius: 16px;
   }
   .ShowComment{
-    /* display: none; */
     padding-bottom: 3rem;
     overflow-y: scroll;
     height: 10rem;

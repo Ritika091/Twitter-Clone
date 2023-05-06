@@ -67,15 +67,12 @@ input[type="file"] {
 .Tweetbtn{
     margin-left: 10rem;
     position: relative;
-    /* top: -11rem; */
     top: 1.6rem;
 }
 .cancelTweet{
     display: block !important;
     position: fixed;
     top: 2rem;
-    /* top: -27rem; */
-    /* margin-top: -25rem; */
 }
 .tweetpic{
     left: 1rem;

@@ -23,8 +23,6 @@ useEffect(()=>{
   })
   .then(res=>res.json())
   .then((result)=>{
-    // setPic(result.post)
-    // console.log(pic)
     console.log(result)
     setUserphoto(result.user.Photo)
   })

@@ -1,7 +1,6 @@
 import React,{useState,useEffect} from 'react'
 import './Profile.css'
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
-import twitterprofile from '../../assets/twitterprofile.webp'
 import { Avatar } from '@mui/material'
 import ProfImg from '../../assets/profileLogo.jpg'
 import CalendarMonthOutlinedIcon from '@mui/icons-material/CalendarMonthOutlined';
@@ -94,16 +93,9 @@ export default function ProfileOption() {
             <h2>{user.name}</h2>
             <p>@{user.userName}</p>
            <br />
-           {/* <p>Life does not get better by chance. It gets better by change🙂</p> */}
            <p>{user.bio?user.bio : "Hey there! I am using twitter." }</p>
             <br />
-            {/* <div className="Prof">
-                <CakeOutlinedIcon/>
-                <p>Born November 9, 2002</p>
-                <CalendarMonthOutlinedIcon/>
-                <p>Joined May 2020</p>
-            </div> */}
-
+  
             <div className="Following">
             <p><span>{user.following?user.following.length:"0"} </span> Following</p>
                 <p><span>{user.followers?user.followers.length:"0"}</span> Followers</p>
@@ -134,7 +126,6 @@ export default function ProfileOption() {
                           <h3>{user.name}{"  "}
                               <span>
                               @{user.userName}
-                                  {/* @trunarla . Mar 14 */}
                               </span>
                           </h3>
                           </div>
@@ -148,8 +139,6 @@ export default function ProfileOption() {
               <ChatBubbleOutlineOutlinedIcon fontSize='small' className='FooterIcon' />
               <RepeatOutlinedIcon fontSize='small' className='FooterIcon' />
                     <FavoriteIcon fontSize='small' className='FooterIcon'  sx={{ color: '#f91880' }}  />
-              {/* <p className='like'>{posts.likes.length}</p> */}
-              {/* <PublishIcon fontSize='small' className='FooterIcon' />              */}
               <DeleteIcon fontSize='small' className='FooterIcon' onClick={()=>{
             DeletePost(data._id);
             navigate('/');

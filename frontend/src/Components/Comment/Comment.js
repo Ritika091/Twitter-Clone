@@ -2,7 +2,6 @@ import {React,useEffect,useState} from 'react'
 import './Comment.css'
 import CloseIcon from '@mui/icons-material/Close';
 import { Avatar} from '@mui/material'
-import ProfileLogo from '../../assets/profileLogo.jpg'
 import { useNavigate } from 'react-router-dom';
 
 export default function Comment({toggler,items}) {
@@ -25,11 +24,7 @@ export default function Comment({toggler,items}) {
         .then((result)=>{
           setComment("")
             // console.log("The result",result)
-            updatePage(result);
-         
-        
-
-            
+            updatePage(result);   
         })
         .catch(err=>console.log(err))
   }
@@ -58,10 +53,6 @@ export default function Comment({toggler,items}) {
     })
     .then(res=>res.json())
     .then((result)=>{
-      // setPic(result.post)
-      // console.log(pic)
-      // console.log(result)
-      // setUserphoto(result.user.Photo)
       console.log('Photo tester:',result.user.Photo)
       setUserphoto(result.user.Photo)
     })
@@ -97,11 +88,8 @@ console.log('My data: ',items)
       </div>
     )})}
       </div>
-  
-
-
       </div>
-</div>
+     </div>
     </div>
 </div>
 

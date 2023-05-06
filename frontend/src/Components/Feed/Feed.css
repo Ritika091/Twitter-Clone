@@ -38,7 +38,6 @@
 .subFeed_header h3:first-child{
     font-weight: 700;
     color: black;
-    /* border-bottom: 4px solid rgb(29, 155, 240); */
 }
 .subFeed_header h3.activeLink{
     border-bottom: 4px solid rgb(29, 155, 240);
