@@ -93,7 +93,14 @@ export default function UserProfileOption() {
             <KeyboardBackspaceIcon className='Arrow' onClick={()=>{navigate('/'); }}/>
         </div>
         <div className="ProfileImg">
-            <img src={twitterprofile} alt=""  className='banner'/>
+            <img src={user.BgPhoto ? user.BgPhoto : ""} alt=""  className='banner'/>
+            </div>
+            <div className="UserImg">
+            <Avatar className='ProfPic'
+             alt="Remy Sharp"
+             src={user.Photo ? user.Photo : picLink}
+            sx={{ width: 130, height: 130 }}
+            />
             <button className='Followbtn' 
             onClick={()=>{
               if(isFollow){
@@ -103,11 +110,6 @@ export default function UserProfileOption() {
               followUser(user._id)}
             }}>
               {isFollow?"Unfollow":"Follow"}</button>
-            <Avatar className='ProfPic'
-             alt="Remy Sharp"
-             src={user.Photo ? user.Photo : picLink}
-            sx={{ width: 130, height: 130 }}
-            />
             </div>
 
             <div className="ProfileContent">

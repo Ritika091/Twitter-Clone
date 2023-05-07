@@ -43,16 +43,18 @@
     height: 2.5rem;
     background: #000;
     border-radius: 5rem;
-    position: absolute;
+    margin-left: auto;
+    margin-right: 1.5rem;
     color: white;
-    right: 34rem;
-    top: 16rem;
     border: 1px solid #c3c8cb;
     font-family: "TwitterChirp",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
     font-size: 15px;
     line-height: 20px;
     font-weight: 700;
     cursor: pointer;
+}
+.UserImg{
+    display: flex;
 }
 .ProfileContent{
 margin-top: -4rem;
@@ -155,7 +157,7 @@ margin-left: 1rem;
     margin-bottom: 12rem;
 }
 .Followbtn{
-    right: 9rem;
-    position: fixed;
+    margin-left: auto;
+    margin-right: 1rem;
 }
 }
