@@ -116,7 +116,7 @@ export default function UserProfileOption() {
             <h2>{user.name}</h2>
             <p>@{user.userName}</p>
            <br />
-           <p>Life does not get better by chance. It gets better by change🙂</p>
+           <p>{user.bio?user.bio : "Hey there! I am using twitter." }</p>
             <br />
             {/* <div className="Prof">
                 <CakeOutlinedIcon/>
