@@ -49,7 +49,7 @@ const[message,setMessage]=useState('');
         <div className="formContainer1">
         <img className='signinlogo' src={logo} alt="" />
         <h2>Sign in to Twitter</h2>
-        <button>
+        {/* <button>
           <img src={googlelogo} alt="" />
           Sign in with Google
         </button>
@@ -58,14 +58,14 @@ const[message,setMessage]=useState('');
           Sign in with Apple
         </button>
         <hr />
-        <span>or</span>
+        <span>or</span> */}
 
        <p className='message'>{message}</p>
-          <input type="text" placeholder='Phone, email address, or username' onChange={(e)=>{setEmail(e.target.value)}}/>
+          <input type="text" placeholder='email address' onChange={(e)=>{setEmail(e.target.value)}}/>
           <input type="password" placeholder='password'  onChange={(e)=>{setPassword(e.target.value)}}></input> 
           <button id='signin' onClick={LoginData}>Next</button>
       
-        <button>Forgot password</button>
+        {/* <button>Forgot password</button> */}
         <p>Don’t have an account? <Link to="/signup">Sign up</Link></p>
         </div>
     </div>

@@ -125,7 +125,7 @@ margin-left: 1rem;
     .RespProfile {
         display: block;
         border: 2px solid black;
-        width: fit-content;
+        width: auto;
     }
     .ProfileOption {
         margin-left: 0rem;

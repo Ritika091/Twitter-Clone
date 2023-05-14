@@ -52,7 +52,7 @@ const[message,setMessage]=useState("");
             <h2>
                 Join Twitter today
             </h2>
-            <button>
+            {/* <button>
           <img src={googlelogo} alt="" />
           Sign up with Google
         </button>
@@ -61,7 +61,7 @@ const[message,setMessage]=useState("");
           Sign up with Apple
         </button>
         <hr />
-        <span>or</span>
+        <span>or</span> */}
 
        <p className='signup'>{message}</p>
         
